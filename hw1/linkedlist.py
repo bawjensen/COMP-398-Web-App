@@ -40,6 +40,7 @@ class Node():
 class LinkedList():
 	def __init__(self):
 		self.head = None
+		self.tail = None
 
 	def isEmpty(self):
 		return self.head == None
@@ -47,13 +48,12 @@ class LinkedList():
 	def append(self, newCargo):
 		if self.isEmpty():
 			self.head = Node(newCargo)
+			self.tail = self.head
 		else:
 			iterNode = self.head
 
-			while iterNode.getNext() != None:
-				iterNode = iterNode.getNext()
-
-			iterNode.insertAfter(newCargo)
+			self.tail.insertAfter(newCargo)
+			self.tail = self.tail.getNext()
 
 	def find(self, item):
 		iterNode = self.head
