@@ -14,10 +14,10 @@ class Node():
 		return self.cargo
 
 	def insertAfter(self, newItem):
-		if type(newItem) == str:
-			self.next = Node(newItem)
-		elif type(newItem) == Node:
+		if type(newItem) == Node:
 			self.next = newItem
+		else:
+			self.next = Node(newItem)
 
 	def __eq__(self, other):
 		if other == None:
@@ -30,7 +30,7 @@ class Node():
 		if type(self.cargo) == str:
 			strBuffer += "\'"
 
-		strBuffer += self.cargo
+		strBuffer += str(self.cargo)
 
 		if type(self.cargo) == str:
 			strBuffer += "\'"
@@ -77,6 +77,17 @@ class LinkedList():
 
 		for item in items:
 			self.append(item)
+
+	def populate_v2(self, fileName, delimiter1, delimiter2):
+		self.head = None
+
+		fileString = open(fileName, "r").read()
+
+		items = fileString.split(delimiter1)
+
+		for item in items:
+			self.append(tuple(item.strip().split(delimiter2)))
+
 
 	def __str__(self):
 		strBuffer = ""
