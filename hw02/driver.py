@@ -1,14 +1,9 @@
 import linkedlist
 
 def main():
-	ll = linkedlist.LinkedList()
+	ll = linkedlist.LinkedList() # Create the linked list
 
-	for i in xrange(50):
-		ll.append("test")
-	ll.append("hai")
-	ll.append("test")
-
-	ll.populate_v2("states.csv", "\r", ",")
+	ll.populate_v2("states.csv", "\r", ",") # Populate from the file
 
 	print ll
 

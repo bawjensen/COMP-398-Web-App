@@ -1,43 +1,42 @@
-class Node():
-	def __init__(self):
-		self.cargo = None
-		self.next = None
-
-	def __init__(self, newCargo):
-		self.cargo = newCargo
-		self.next = None
-
-	def getNext(self):
-		return self.next
-
-	def getCargo(self):
-		return self.cargo
-
-	def insertAfter(self, newItem):
-		if type(newItem) == Node:
-			self.next = newItem
-		else:
-			self.next = Node(newItem)
-
-	def __eq__(self, other):
-		if other == None:
-			return False
-		return self.cargo == other.cargo
-
-	def __str__(self):
-		strBuffer = ""
-
-		if type(self.cargo) == str:
-			strBuffer += "\'"
-
-		strBuffer += str(self.cargo)
-
-		if type(self.cargo) == str:
-			strBuffer += "\'"
-
-		return strBuffer
-
 class LinkedList():
+	class Node():
+		def __init__(self):
+			self.cargo = None
+			self.next = None
+
+		def __init__(self, newCargo):
+			self.cargo = newCargo
+			self.next = None
+
+		def getNext(self):
+			return self.next
+
+		def getCargo(self):
+			return self.cargo
+
+		def insertAfter(self, newItem):
+			if type(newItem) == LinkedList.Node:
+				self.next = newItem
+			else:
+				self.next = LinkedList.Node(newItem)
+
+		def __eq__(self, other):
+			if other == None:
+				return False
+			return self.cargo == other.cargo
+
+		def __str__(self):
+			strBuffer = ""
+
+			if type(self.cargo) == str:
+				strBuffer += "\'"
+
+			strBuffer += str(self.cargo)
+
+			if type(self.cargo) == str:
+				strBuffer += "\'"
+
+			return strBuffer
 	def __init__(self):
 		self.head = None
 		self.tail = None
@@ -47,7 +46,7 @@ class LinkedList():
 
 	def append(self, newCargo):
 		if self.isEmpty():
-			self.head = Node(newCargo)
+			self.head = self.Node(newCargo)
 			self.tail = self.head
 		else:
 			iterNode = self.head
@@ -60,7 +59,7 @@ class LinkedList():
 		depth = 0
 
 		while iterNode != None:
-			if (type(item) == str and iterNode.getCargo() == item) or (type(item) == Node and iterNode == item):
+			if (type(item) == str and iterNode.getCargo() == item) or (type(item) == self.Node and iterNode == item):
 				return depth
 
 			iterNode = iterNode.getNext()
