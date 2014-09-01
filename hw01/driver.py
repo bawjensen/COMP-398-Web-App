@@ -8,7 +8,7 @@ def main():
 	ll.append("hai")
 	ll.append("test")
 
-	ll.populate_v2("states.csv", "\r", ",")
+	ll.populate("db.txt", "\n")
 
 	print ll
 
