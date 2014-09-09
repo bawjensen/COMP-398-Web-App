@@ -164,7 +164,6 @@ class MarkdownParser(object):
 
 	def handle(self, lineType, lineIndex):
 		line = self.lines[lineIndex]
-		# print 'Handling', line
 
 		newElement = MarkupElement(elementType=lineType)
 
@@ -178,7 +177,7 @@ class MarkdownParser(object):
 
 		elif lineType == ElementType.paragraph:
 			# Test if "paragraph" is actually a header
-			if isUnderlineForHeader(self.lines[lineIndex + 1]):
+			if lineIndex < len(self.lines) - 1 and isUnderlineForHeader(self.lines[lineIndex + 1]):
 				if (self.lines[lineIndex + 1][0] == '='):
 					newElement.type = ElementType.header1
 				elif (self.lines[lineIndex + 1][0] == '-'):
@@ -240,9 +239,6 @@ class MarkdownParser(object):
 
 			newElement.setText(string)
 
-
-
-		# print 'Created', newElement
 		self.elements.append(newElement)
 
 		return lineIndex + 1
