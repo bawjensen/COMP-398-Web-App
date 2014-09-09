@@ -33,6 +33,67 @@ class MarkupElement(object):
 		self.lineNumber = lineNumber
 		self.text = None
 
+	def setText(self, string):
+		tempText = string
+
+		# ---------------- First pass: ** or __ -> strong
+
+		splitString = [el for el in re.split(r'\*\*|__', tempText) if el != '']
+
+		tempText = ''
+
+		i = 0
+		while i + 2 < len(splitString):
+			tempText += splitString[i] + '<strong>' + splitString[i+1] + '</strong>'
+
+			i += 2
+
+		tempText += splitString[-1]
+
+		# ---------------- Second pass: * or _ -> em
+
+		splitString = [el for el in re.split(r'\*|_', tempText) if el != '']
+
+		tempText = ''
+
+		i = 0
+		while i + 2 < len(splitString):
+			tempText += splitString[i] + '<em>' + splitString[i+1] + '</em>'
+
+			i += 2
+
+		tempText += splitString[-1]
+
+		# ---------------- Third pass: links
+
+		linkLocation = tempText.find('](')
+		while linkLocation != -1:
+			reverseIndex = linkLocation
+			while reverseIndex > 0:
+				if tempText[reverseIndex] == '[':
+					linkText = tempText[reverseIndex+1:linkLocation]
+					break
+
+				reverseIndex -= 1
+
+			forwardIndex = linkLocation
+			while forwardIndex < len(tempText):
+				if tempText[forwardIndex] == ')':
+					linkAddr = tempText[linkLocation+2:forwardIndex]
+					break
+				
+				forwardIndex += 1
+
+			tempText = tempText[:reverseIndex] + '<a href="' + linkAddr + '">' + linkText + '</a>' + tempText[forwardIndex+1:]
+			
+			linkLocation = tempText.find('](')
+
+
+
+		# --------------- Done, assign it
+
+		self.text = tempText
+
 	def __str__(self):
 		if self.type == None:
 			return ''
@@ -68,7 +129,6 @@ class MarkupElement(object):
 class MarkdownParser(object):
 	def __init__(self):
 		self.elements = []
-		self.state = None
 
 	def identify(self, lineString):
 		if lineString == '':
@@ -104,7 +164,7 @@ class MarkdownParser(object):
 
 	def handle(self, lineType, lineIndex):
 		line = self.lines[lineIndex]
-		print 'Handling', line
+		# print 'Handling', line
 
 		newElement = MarkupElement(elementType=lineType)
 
@@ -114,7 +174,7 @@ class MarkdownParser(object):
 		   lineType == ElementType.header4 or
 		   lineType == ElementType.header5 or
 		   lineType == ElementType.header6):
-			newElement.text = line.lstrip('#').lstrip()
+			newElement.setText(line.lstrip('#').lstrip())
 
 		elif lineType == ElementType.paragraph:
 			# Test if "paragraph" is actually a header
@@ -124,7 +184,7 @@ class MarkdownParser(object):
 				elif (self.lines[lineIndex + 1][0] == '-'):
 					newElement.type = ElementType.header2
 
-				newElement.text = line
+				newElement.setText(line)
 				lineIndex += 1
 
 			# It's actually a paragraph
@@ -134,7 +194,7 @@ class MarkdownParser(object):
 					string += ('\n' + self.lines[lineIndex + 1])
 					lineIndex += 1
 
-				newElement.text = string
+				newElement.setText(string)
 
 		elif lineType == ElementType.unorderedListItem:
 			newElement.type = ElementType.unorderedList
@@ -144,17 +204,7 @@ class MarkdownParser(object):
 				string += ('\n' + '<li>' + self.lines[lineIndex + 1].lstrip('+').lstrip() + '</li>')
 				lineIndex += 1
 
-			newElement.text = string
-
-		elif lineType == ElementType.blockquote:
-			newElement.type = ElementType.blockquote
-			string = line.lstrip('>').lstrip()
-
-			while (lineIndex + 1 < len(self.lines)) and (self.identify(self.lines[lineIndex + 1]) == ElementType.blockquote):
-				string += ('\n' + self.lines[lineIndex + 1].lstrip('>').lstrip())
-				lineIndex += 1
-
-			newElement.text = string
+			newElement.setText(string)
 
 		elif lineType == ElementType.orderedListItem:
 			newElement.type = ElementType.orderedList
@@ -164,11 +214,35 @@ class MarkdownParser(object):
 				string += ('\n' + '<li>' + '.'.join(self.lines[lineIndex + 1].split('.')[1:]).lstrip() + '</li>')
 				lineIndex += 1
 
-			newElement.text = string
+			newElement.setText(string)
+
+		elif lineType == ElementType.blockquote:
+			newElement.type = ElementType.blockquote
+			string = ''
+
+			tempString = line.lstrip('>').lstrip()
+			while (lineIndex + 1 < len(self.lines)) and (self.identify(self.lines[lineIndex + 1]) == ElementType.blockquote):
+				newLine = self.lines[lineIndex + 1].lstrip('>').lstrip()
+				if newLine == '':
+					if tempString.startswith('#'):
+						tag = 'h' + str(tempString[:6].count('#'))
+					else:
+						tag = 'p'
+
+					string += ('\n<' + tag + '>' + tempString.lstrip('#') + '</' + tag + '>')
+					tempString = ''
+				else:
+					tempString += newLine
+
+				lineIndex += 1
+
+			string += ('\n<p>' + tempString + '</p>')
+
+			newElement.setText(string)
 
 
 
-		print 'Created', newElement
+		# print 'Created', newElement
 		self.elements.append(newElement)
 
 		return lineIndex + 1
