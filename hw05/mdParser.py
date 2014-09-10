@@ -1,4 +1,5 @@
 from helpers import consistsEntirelyOf, isUnderlineForHeader
+from MarkupElements import ListElement
 
 import re
 
@@ -130,6 +131,10 @@ class MarkdownParser(object):
 	def __init__(self):
 		self.elements = []
 
+		self.listLineStart = re.compile(r'[\+\-\*]')
+		self.blockquoteLineStart = re.compile(r'[\>]')
+		self.headerLineStart = re.compile(r'#')
+
 	def identify(self, lineString):
 		if lineString == '':
 			identifiedType = None
@@ -243,32 +248,68 @@ class MarkdownParser(object):
 
 		return lineIndex + 1
 
+	def handleList(self, currIndex):
+		listItems = []
+
+		match = self.listLineStart.match(self.lines[currIndex])
+
+		while (currIndex < len(self.lines)) and (match):
+			line = self.lines[currIndex]
+
+			listToken = match.string[match.start():match.end()]
+			listItems.append(line.lstrip(listToken).lstrip(' '))
+
+			match = self.listLineStart.match(line)
+
+			currIndex += 1
+
+		self.elements.append(ListElement(listItems, ordered=False))
 
 
-	def parseLines(self):
-		currentlyIn = None
+		return currIndex
 
-		i = 0
+	def handleParagraphs(self, currIndex):
+		currIndex += 1
 
-		while i < len(self.lines):
-			lineType = self.identify(self.lines[i])
-
-			i = self.handle(lineType, i)
-
-			# if currentlyIn
-
-			# self.feed(line)
-			# self.elements.append(MarkupElement(line, i))
+		return currIndex
 
 	def parseFile(self, fileObj):
 		if isinstance(fileObj, file):
 			fileObj = fileObj.read()
+		elif isinstance(fileObj, str):
+			fileObj = open(fileObj, 'r').read()
 
 		self.lines = fileObj.split('\n')
 
-		self.parseLines()
+		i = 0
+		while i < len(self.lines):
+			line = self.lines[i]
+
+			print line
+			print self.listLineStart.match(line)
+
+			if self.listLineStart.match(line):
+				i = self.handleList(i)
 
 	def writeToFile(self, fileObj):
+		tempOpened = False
+		if isinstance(fileObj, str):
+			fileObj = open(fileObj, 'w')
+			tempOpened = True
+
 		for element in self.elements:
 			fileObj.write(str(element))
 			fileObj.write('\n')
+
+		if tempOpened:
+			fileObj.close()
+
+
+def main():
+	parser = MarkdownParser()
+	parser.parseFile('tiny.md')
+
+	parser.writeToFile('tiny.html')
+
+if __name__ == '__main__':
+	main()
