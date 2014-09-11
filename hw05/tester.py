@@ -1,8 +1,10 @@
-import re
+# import re
 
-listLineStarter = re.compile(r'[\*\-\+]')
+# listLineStarter = re.compile(r'[\*\-\+]')
 
-print listLineStarter.match('hahahaha')
+# print listLineStarter.match('hahahaha')
 
-if (None):
-	print 'yay'
+# if (None):
+# 	print 'yay'
+
+print '    '.strip() == ''

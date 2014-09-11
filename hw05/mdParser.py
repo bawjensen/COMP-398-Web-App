@@ -1,31 +1,7 @@
 from helpers import consistsEntirelyOf, isUnderlineForHeader
-from MarkupElements import ListElement
+from MarkupElements import ListElement, HeaderElement, ParagraphElement, BlockQuoteElement, PreformattedCodeElement
 
 import re
-
-class ElementType(object): # Simple enum class
-	paragraph = 0
-
-	header1 = 1
-	header2 = 2
-	header3 = 3
-	header4 = 4
-	header5 = 5
-	header6 = 6
-
-	blockquote = 7
-
-	orderedListItem = 8
-	unorderedListItem = 9
-
-	orderedList = 10
-	unorderedList = 11
-
-	code = 12
-	emphases = 13
-	links = 14
-	images = 15
-
 
 class MarkupElement(object):
 	def __init__(self, elementType=None, lineString=None, lineNumber=None):
@@ -89,189 +65,165 @@ class MarkupElement(object):
 			
 			linkLocation = tempText.find('](')
 
-
-
-		# --------------- Done, assign it
-
-		self.text = tempText
-
-	def __str__(self):
-		if self.type == None:
-			return ''
-
-		tag = ''
-
-		if self.type == ElementType.paragraph:
-			tag = 'p'
-
-		elif self.type == ElementType.header1:
-			tag = 'h1'
-		elif self.type == ElementType.header2:
-			tag = 'h2'
-		elif self.type == ElementType.header3:
-			tag = 'h3'
-		elif self.type == ElementType.header4:
-			tag = 'h4'
-		elif self.type == ElementType.header5:
-			tag = 'h5'
-		elif self.type == ElementType.header6:
-			tag = 'h6'
-
-		elif self.type == ElementType.blockquote:
-			tag = 'blockquote'
-
-		elif self.type == ElementType.unorderedList:
-			tag = 'ul'
-		elif self.type == ElementType.orderedList:
-			tag = 'ol'
-
-		return '<' + tag + '>' + str(self.text) + '</' + tag + '>'
-
 class MarkdownParser(object):
 	def __init__(self):
 		self.elements = []
 
 		self.listLineStart = re.compile(r'[\+\-\*]')
-		self.blockquoteLineStart = re.compile(r'[\>]')
+		self.blockQuoteLineStart = re.compile(r'[\>]')
 		self.headerLineStart = re.compile(r'#')
+		self.preCodeLineStart = re.compile(r'\s{4}|\t')
 
-	def identify(self, lineString):
-		if lineString == '':
-			identifiedType = None
-
-		elif lineString.startswith('######'):
-			identifiedType = ElementType.header6
-		elif lineString.startswith('#####'):
-			identifiedType = ElementType.header5
-		elif lineString.startswith('####'):
-			identifiedType = ElementType.header4
-		elif lineString.startswith('###'):
-			identifiedType = ElementType.header3
-		elif lineString.startswith('##'):
-			identifiedType = ElementType.header2
-		elif lineString.startswith('#'):
-			identifiedType = ElementType.header1
-
-		elif lineString.startswith('>'):
-			identifiedType = ElementType.blockquote
-
-		elif lineString.startswith('+'):
-			identifiedType = ElementType.unorderedListItem
-
-		elif re.match(r'[0-9]\.', lineString):
-			identifiedType = ElementType.orderedListItem
-
-		else:
-			identifiedType = ElementType.paragraph
-
-		return identifiedType
-
-
-	def handle(self, lineType, lineIndex):
-		line = self.lines[lineIndex]
-
-		newElement = MarkupElement(elementType=lineType)
-
-		if (lineType == ElementType.header1 or 
-		   lineType == ElementType.header2 or
-		   lineType == ElementType.header3 or
-		   lineType == ElementType.header4 or
-		   lineType == ElementType.header5 or
-		   lineType == ElementType.header6):
-			newElement.setText(line.lstrip('#').lstrip())
-
-		elif lineType == ElementType.paragraph:
-			# Test if "paragraph" is actually a header
-			if lineIndex < len(self.lines) - 1 and isUnderlineForHeader(self.lines[lineIndex + 1]):
-				if (self.lines[lineIndex + 1][0] == '='):
-					newElement.type = ElementType.header1
-				elif (self.lines[lineIndex + 1][0] == '-'):
-					newElement.type = ElementType.header2
-
-				newElement.setText(line)
-				lineIndex += 1
-
-			# It's actually a paragraph
-			else:
-				string = line
-				while (lineIndex + 1 < len(self.lines)) and (self.identify(self.lines[lineIndex + 1]) == ElementType.paragraph):
-					string += ('\n' + self.lines[lineIndex + 1])
-					lineIndex += 1
-
-				newElement.setText(string)
-
-		elif lineType == ElementType.unorderedListItem:
-			newElement.type = ElementType.unorderedList
-			string = '<li>' + line.lstrip('+').lstrip() + '</li>'
-
-			while (lineIndex + 1 < len(self.lines)) and (self.identify(self.lines[lineIndex + 1]) == ElementType.unorderedListItem):
-				string += ('\n' + '<li>' + self.lines[lineIndex + 1].lstrip('+').lstrip() + '</li>')
-				lineIndex += 1
-
-			newElement.setText(string)
-
-		elif lineType == ElementType.orderedListItem:
-			newElement.type = ElementType.orderedList
-			string = '<li>' + '.'.join(line.split('.')[1:]).lstrip() + '</li>'
-
-			while (lineIndex + 1 < len(self.lines)) and (self.identify(self.lines[lineIndex + 1]) == ElementType.orderedListItem):
-				string += ('\n' + '<li>' + '.'.join(self.lines[lineIndex + 1].split('.')[1:]).lstrip() + '</li>')
-				lineIndex += 1
-
-			newElement.setText(string)
-
-		elif lineType == ElementType.blockquote:
-			newElement.type = ElementType.blockquote
-			string = ''
-
-			tempString = line.lstrip('>').lstrip()
-			while (lineIndex + 1 < len(self.lines)) and (self.identify(self.lines[lineIndex + 1]) == ElementType.blockquote):
-				newLine = self.lines[lineIndex + 1].lstrip('>').lstrip()
-				if newLine == '':
-					if tempString.startswith('#'):
-						tag = 'h' + str(tempString[:6].count('#'))
-					else:
-						tag = 'p'
-
-					string += ('\n<' + tag + '>' + tempString.lstrip('#') + '</' + tag + '>')
-					tempString = ''
-				else:
-					tempString += newLine
-
-				lineIndex += 1
-
-			string += ('\n<p>' + tempString + '</p>')
-
-			newElement.setText(string)
-
-		self.elements.append(newElement)
-
-		return lineIndex + 1
-
-	def handleList(self, currIndex):
+	def handleList(self, linesList, currIndex):
 		listItems = []
 
 		match = self.listLineStart.match(self.lines[currIndex])
 
-		while (currIndex < len(self.lines)) and (match):
-			line = self.lines[currIndex]
+		while (currIndex < len(linesList)) and (match):
+			line = linesList[currIndex]
 
 			listToken = match.string[match.start():match.end()]
 			listItems.append(line.lstrip(listToken).lstrip(' '))
 
-			match = self.listLineStart.match(line)
+			if currIndex + 1 < len(linesList):
+				match = self.listLineStart.match(linesList[currIndex + 1])
+			else:
+				match = None
 
 			currIndex += 1
 
 		self.elements.append(ListElement(listItems, ordered=False))
 
-
 		return currIndex
 
-	def handleParagraphs(self, currIndex):
+	def handleHeader(self, linesList, currIndex):
+		line = linesList[currIndex]
+
+		headerLevel = 0
+		for letter in line:
+			if letter == '#':
+				headerLevel += 1
+			else:
+				break
+
+		if headerLevel > 6:
+			print 'Um... You can\'t make a header smaller than six levels:', line
+			exit(1)
+
+		if headerLevel == 0:
+			nextLine = linesList[currIndex + 1]
+
+			underlineCharacter = nextLine.lstrip()[0]
+
+			headerLevel = 1 if (underlineCharacter == '=') else 2
+
+			currIndex += 1 # Need to increment another index if we have an underlined header
+
+		self.elements.append(HeaderElement(line.lstrip('#').lstrip(), headerLevel))
+
 		currIndex += 1
 
 		return currIndex
+
+	def handleParagraph(self, linesList, currIndex):
+		paragraphContents = ''
+		while (currIndex < len(linesList)) and (linesList[currIndex].strip() != ''):
+			line = linesList[currIndex].strip()
+
+			paragraphContents += (line + ' ')
+
+			currIndex += 1
+
+		self.elements.append(ParagraphElement(paragraphContents.rstrip(' ')))
+
+		return currIndex
+
+	def handleBlockQuote(self, linesList, currIndex):
+		newLinesList = []
+
+		match = self.blockQuoteLineStart.match(linesList[currIndex])
+
+		while (currIndex < len(linesList)) and (match):
+			line = linesList[currIndex].lstrip('>').lstrip()
+
+			newLinesList.append(line)
+
+			if currIndex + 1 < len(linesList) and (match):
+				match = self.blockQuoteLineStart.match(linesList[currIndex + 1])
+			else:
+				match = None
+
+			currIndex += 1
+
+		# tempIndex = 0
+		# while tempIndex < len(newLinesList):
+		oldLength = len(self.elements)
+
+		self.parseLines(newLinesList)
+
+		newElements = self.elements[oldLength:]
+		self.elements = self.elements[:oldLength]
+
+		self.elements.append(BlockQuoteElement(newElements))
+
+		return currIndex
+
+	def handlePreformattedCode(self, linesList, currIndex):
+		contents = ''
+
+		match = self.preCodeLineStart.match(linesList[currIndex])
+
+		while (currIndex < len(linesList)) and bool(match):
+			line = linesList[currIndex]
+
+			contents += (line.strip() + ' ')
+
+			if currIndex + 1 < len(linesList):
+				match = self.preCodeLineStart.match(linesList[currIndex + 1])
+			else:
+				match = None
+
+			currIndex += 1
+
+		self.elements.append(PreformattedCodeElement(contents.rstrip(' ')))
+
+		return currIndex
+
+	def parseLines(self, linesList):
+		i = 0
+		while i < len(linesList):
+			line = linesList[i]
+
+			if line.strip() == '':
+				i += 1
+				continue
+
+			if i + 1 < len(linesList):
+				nextLine = linesList[i + 1]
+
+			if self.listLineStart.match(line):
+				print line, 'was a list'
+				i = self.handleList(linesList, i)
+
+			elif self.headerLineStart.match(line) or (i + 1 < len(linesList) and isUnderlineForHeader(nextLine)):
+				print line, 'was a header'
+				i = self.handleHeader(linesList, i)
+
+			elif self.blockQuoteLineStart.match(line):
+				print line, 'was a block quote'
+				i = self.handleBlockQuote(linesList, i)
+
+			elif self.preCodeLineStart.match(line):
+				print line, 'was a preformatted code block'
+				i = self.handlePreformattedCode(linesList, i)
+
+			else:
+				print line, 'was a paragraph'
+				i = self.handleParagraph(linesList, i)
+
+		return i
+
+
 
 	def parseFile(self, fileObj):
 		if isinstance(fileObj, file):
@@ -281,15 +233,8 @@ class MarkdownParser(object):
 
 		self.lines = fileObj.split('\n')
 
-		i = 0
-		while i < len(self.lines):
-			line = self.lines[i]
+		self.parseLines(self.lines)
 
-			print line
-			print self.listLineStart.match(line)
-
-			if self.listLineStart.match(line):
-				i = self.handleList(i)
 
 	def writeToFile(self, fileObj):
 		tempOpened = False
