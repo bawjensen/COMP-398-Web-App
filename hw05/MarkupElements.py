@@ -19,6 +19,7 @@ class ParagraphElement(object):
 	def __str__(self):
 		return '<p>' + self.text + '</p>'
 
+
 class HeaderElement(object):
 	def __init__(self, text, level):
 		self.text = text
@@ -27,12 +28,14 @@ class HeaderElement(object):
 	def __str__(self):
 		return '<h' + str(self.level) + '>' + self.text + '</h' + str(self.level) + '>'
 
+
 class BlockQuoteElement(object):
 	def __init__(self, subElements):
 		self.subElements = subElements
 
 	def __str__(self):
 		return '<blockquote>\n' + '\n'.join(['\t' + str(x) for x in self.subElements]) + '\n</blockquote>'
+
 
 class PreformattedCodeElement(object):
 	def __init__(self, contents):

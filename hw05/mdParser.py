@@ -3,96 +3,101 @@ from MarkupElements import ListElement, HeaderElement, ParagraphElement, BlockQu
 
 import re
 
-class MarkupElement(object):
-	def __init__(self, elementType=None, lineString=None, lineNumber=None):
-		self.type = elementType
-		self.lineString = lineString
-		self.lineNumber = lineNumber
-		self.text = None
+# class MarkupElement(object):
+# 	def __init__(self, elementType=None, lineString=None, lineNumber=None):
+# 		self.type = elementType
+# 		self.lineString = lineString
+# 		self.lineNumber = lineNumber
+# 		self.text = None
 
-	def setText(self, string):
-		tempText = string
 
-		# ---------------- First pass: ** or __ -> strong
+# 	def setText(self, string):
+# 		tempText = string
 
-		splitString = [el for el in re.split(r'\*\*|__', tempText) if el != '']
+# 		# ---------------- First pass: ** or __ -> strong
 
-		tempText = ''
+# 		splitString = [el for el in re.split(r'\*\*|__', tempText) if el != '']
 
-		i = 0
-		while i + 2 < len(splitString):
-			tempText += splitString[i] + '<strong>' + splitString[i+1] + '</strong>'
+# 		tempText = ''
 
-			i += 2
+# 		i = 0
+# 		while i + 2 < len(splitString):
+# 			tempText += splitString[i] + '<strong>' + splitString[i+1] + '</strong>'
 
-		tempText += splitString[-1]
+# 			i += 2
 
-		# ---------------- Second pass: * or _ -> em
+# 		tempText += splitString[-1]
 
-		splitString = [el for el in re.split(r'\*|_', tempText) if el != '']
+# 		# ---------------- Second pass: * or _ -> em
 
-		tempText = ''
+# 		splitString = [el for el in re.split(r'\*|_', tempText) if el != '']
 
-		i = 0
-		while i + 2 < len(splitString):
-			tempText += splitString[i] + '<em>' + splitString[i+1] + '</em>'
+# 		tempText = ''
 
-			i += 2
+# 		i = 0
+# 		while i + 2 < len(splitString):
+# 			tempText += splitString[i] + '<em>' + splitString[i+1] + '</em>'
 
-		tempText += splitString[-1]
+# 			i += 2
 
-		# ---------------- Third pass: links
+# 		tempText += splitString[-1]
 
-		linkLocation = tempText.find('](')
-		while linkLocation != -1:
-			reverseIndex = linkLocation
-			while reverseIndex > 0:
-				if tempText[reverseIndex] == '[':
-					linkText = tempText[reverseIndex+1:linkLocation]
-					break
+# 		# ---------------- Third pass: links
 
-				reverseIndex -= 1
+# 		linkLocation = tempText.find('](')
+# 		while linkLocation != -1:
+# 			reverseIndex = linkLocation
+# 			while reverseIndex > 0:
+# 				if tempText[reverseIndex] == '[':
+# 					linkText = tempText[reverseIndex+1:linkLocation]
+# 					break
 
-			forwardIndex = linkLocation
-			while forwardIndex < len(tempText):
-				if tempText[forwardIndex] == ')':
-					linkAddr = tempText[linkLocation+2:forwardIndex]
-					break
+# 				reverseIndex -= 1
+
+# 			forwardIndex = linkLocation
+# 			while forwardIndex < len(tempText):
+# 				if tempText[forwardIndex] == ')':
+# 					linkAddr = tempText[linkLocation+2:forwardIndex]
+# 					break
 				
-				forwardIndex += 1
+# 				forwardIndex += 1
 
-			tempText = tempText[:reverseIndex] + '<a href="' + linkAddr + '">' + linkText + '</a>' + tempText[forwardIndex+1:]
+# 			tempText = tempText[:reverseIndex] + '<a href="' + linkAddr + '">' + linkText + '</a>' + tempText[forwardIndex+1:]
 			
-			linkLocation = tempText.find('](')
+# 			linkLocation = tempText.find('](')
 
 class MarkdownParser(object):
 	def __init__(self):
 		self.elements = []
 
-		self.listLineStart = re.compile(r'[\+\-\*]')
+		self.unorderedListLineStart = re.compile(r'[\+\-\*]')
+		self.orderedListLineStart = re.compile(r'[0-9\.]')
 		self.blockQuoteLineStart = re.compile(r'[\>]')
 		self.headerLineStart = re.compile(r'#')
 		self.preCodeLineStart = re.compile(r'\s{4}|\t')
 
-	def handleList(self, linesList, currIndex):
+	def handleList(self, linesList, currIndex, ordered):
 		listItems = []
 
-		match = self.listLineStart.match(self.lines[currIndex])
+		match = self.orderedListLineStart.match(self.lines[currIndex]) if ordered else self.unorderedListLineStart.match(self.lines[currIndex])
 
 		while (currIndex < len(linesList)) and (match):
 			line = linesList[currIndex]
 
 			listToken = match.string[match.start():match.end()]
-			listItems.append(line.lstrip(listToken).lstrip(' '))
+			if ordered:
+				listItems.append(line.lstrip(listToken).lstrip('.').lstrip(' '))
+			else:
+				listItems.append(line.lstrip(listToken).lstrip(' '))
 
 			if currIndex + 1 < len(linesList):
-				match = self.listLineStart.match(linesList[currIndex + 1])
+				match = self.orderedListLineStart.match(linesList[currIndex + 1]) if ordered else self.unorderedListLineStart.match(self.lines[currIndex + 1])
 			else:
 				match = None
 
 			currIndex += 1
 
-		self.elements.append(ListElement(listItems, ordered=False))
+		self.elements.append(ListElement(listItems, ordered=ordered))
 
 		return currIndex
 
@@ -176,7 +181,7 @@ class MarkdownParser(object):
 		while (currIndex < len(linesList)) and bool(match):
 			line = linesList[currIndex]
 
-			contents += (line.strip() + ' ')
+			contents += (line.strip() + '\n')
 
 			if currIndex + 1 < len(linesList):
 				match = self.preCodeLineStart.match(linesList[currIndex + 1])
@@ -185,7 +190,7 @@ class MarkdownParser(object):
 
 			currIndex += 1
 
-		self.elements.append(PreformattedCodeElement(contents.rstrip(' ')))
+		self.elements.append(PreformattedCodeElement(contents.rstrip('\n')))
 
 		return currIndex
 
@@ -201,9 +206,13 @@ class MarkdownParser(object):
 			if i + 1 < len(linesList):
 				nextLine = linesList[i + 1]
 
-			if self.listLineStart.match(line):
-				print line, 'was a list'
-				i = self.handleList(linesList, i)
+			if self.unorderedListLineStart.match(line):
+				print line, 'was an unordered list'
+				i = self.handleList(linesList, i, ordered=False)
+
+			if self.orderedListLineStart.match(line):
+				print line, 'was an ordered list'
+				i = self.handleList(linesList, i, ordered=True)
 
 			elif self.headerLineStart.match(line) or (i + 1 < len(linesList) and isUnderlineForHeader(nextLine)):
 				print line, 'was a header'
@@ -223,8 +232,6 @@ class MarkdownParser(object):
 
 		return i
 
-
-
 	def parseFile(self, fileObj):
 		if isinstance(fileObj, file):
 			fileObj = fileObj.read()
@@ -234,7 +241,6 @@ class MarkdownParser(object):
 		self.lines = fileObj.split('\n')
 
 		self.parseLines(self.lines)
-
 
 	def writeToFile(self, fileObj):
 		tempOpened = False
@@ -248,7 +254,6 @@ class MarkdownParser(object):
 
 		if tempOpened:
 			fileObj.close()
-
 
 def main():
 	parser = MarkdownParser()
