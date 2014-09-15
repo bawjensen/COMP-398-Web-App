@@ -1,3 +1,5 @@
+import operator
+
 def createSVGCircle(positionX, positionY, size):
 	svgCircle = '<circle'
 
@@ -12,7 +14,7 @@ def createSVGCircle(positionX, positionY, size):
 	return svgCircle
 
 
-def createSVGCircleLabel(positionX, positionY, label, size):
+def createSVGCircleLabel(positionX, positionY, label, count, size):
 	font_size = 30
 
 	svgLabel = '<text'
@@ -25,7 +27,7 @@ def createSVGCircleLabel(positionX, positionY, label, size):
 
 	svgLabel += '>'
 
-	svgLabel += label
+	svgLabel += label + ':' + str(count)
 
 	svgLabel += '</text>'
 
@@ -44,6 +46,7 @@ def main():
 			)
 		)
 
+	# departments = [key for key, value in sorted(enrollmentDict.iteritems(), key=operator.itemgetter(1), reverse=True)]
 	departments = enrollmentDict.keys()
 
 	svgElement = """<svg version="1.1"
@@ -57,17 +60,18 @@ def main():
 
 	for i in xrange(6):
 		for j in xrange(6):
-			xPos = (j+1) * spacing
-			yPos = (i+1) * spacing
+			yPos = (j+1) * spacing
+			xPos = (i+1) * spacing
 			departmentLabel = departments[i + j*6]
-			size = enrollmentDict[departmentLabel] * scalar
+			count = enrollmentDict[departmentLabel]
+			size = count * scalar
 
 			svgElement += '\n\t' + createSVGCircle(xPos, yPos, size)
-			svgElement += '\n\t' + createSVGCircleLabel(xPos, yPos, departmentLabel, size)
+			svgElement += '\n\t' + createSVGCircleLabel(xPos, yPos, departmentLabel, count, size)
 
 	svgElement += '\n</svg>'
 
-	with open('svg.html', 'w') as outFile:
+	with open('unsorted.svg', 'w') as outFile:
 		outFile.write(svgElement)
 
 if __name__ == '__main__':
