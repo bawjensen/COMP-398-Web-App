@@ -8,7 +8,7 @@ dataValues = {
     'subject_sch' : '%',
     'subject_cat' : '%',
     'foundation_sch' : '%',
-    'schedule_beginterm' : '201610',
+    'schedule_beginterm' : '201510',
     'intmajor_cat' : '%',
     'division_sch' : '%',
     'foundation_cat' : '%',
