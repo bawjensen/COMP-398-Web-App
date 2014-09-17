@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+	<title>Nutrition Facts</title>
+</head>
+<body>
+
+	<style type="text/css">
+		.cf:before,
+		.cf:after {
+			content: '';
+			display: table;
+		}
+
+		.cf:after {
+			clear: both;
+		}
+
+		body {
+			font-family: helvetica;
+			font-size: 8px;
+		}
+
+		span {
+			clear: left;
+			float: left;
+		}
+
+		span.percent-val {
+			clear: right;
+			float: right;
+		}
+
+		#nutri-label {
+			width: 163px;
+			height: 800px;
+
+			border: 1px solid black;
+
+			padding: 3px;
+		}
+
+		#header-info {
+			border-bottom: 7px solid black;
+		}
+
+		#label-title {
+			font-size: 23px;
+			font-weight: 900;
+			line-height: 0.8em;
+		}
+
+		.label-title-subinfo {
+			font-size: 8px;
+		}
+
+		#main-section-label {
+			font-size: 6px;
+			font-weight: 900;
+			display: block;
+			width: 159px;
+			border-bottom: 0.5px solid #000;
+			padding: 2px;
+		}
+
+		#calorie-line {
+			border-bottom: 1px solid black;
+		}
+
+		#calorie-from-fat-label {
+			float: right;
+		}
+	</style>
+	<div id="nutri-label">
+		<div id="header-info" class="cf">
+			<span id="label-title">Nutrition Facts</span>
+			<span class="label-title-subinfo">Serving Size 2/3 cup (55g)</span>
+			<span class="label-title-subinfo">Servings Per Container About 8</span>
+		</div>
+
+		<div id="main-section" class="cf">
+			<span id="main-section-label">Amount Per Serving</span>
+
+			<span id="calorie-line" class="cf">
+				<span id="calorie-label"><b>Calories</b> 230</span>
+				<span id="calorie-from-fat-label">Calories from Fat 72</span>
+			</span>
+
+			<span id="info-legend">% Daily Value*</span>
+
+			<span id="fat-label">Total Fat 8g</span>
+			<span class="percent-val" id="fat-percent">12%</span>
+			<span class="secondary-label" id="sat-fat-label">Saturated Fat 1g</span>
+			<span class="percent-val" id="sat-fat-percent">5%</span>
+			<span class="secondary-label" id="trans-fat-label">Trans Fat 0g</span>
+
+			<span id="cholesterol-label">Cholesterol 0mg</span>
+			<span class="percent-val" id="cholesterol-percent">0%</span>
+
+			<span id="sodium-label">Sodium 160mg</span>
+			<span class="percent-val" id="sodium-percent">7%</span>
+
+			<span id="total-carb-label">Total Carbohydrate 37g</span>
+			<span class="percent-val" id="total-carb-percent">12%</span>
+			<span class="secondary-label" id="diet-fiber-label">Dietary Fiber 4g</span>
+			<span class="percent-val" id="diet-fiber-percent">16%</span>
+			<span class="secondary-label" id="sugar-label">Sugars 1g</span>
+
+			<span id="protein-label">Protein 3g</span>
+		</div>
+	</div>
+</body>
+</html>
