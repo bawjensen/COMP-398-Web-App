@@ -1,0 +1,279 @@
+<!doctype html>
+<html>
+<head>
+	<title>Nutrition Facts</title>
+</head>
+<body>
+
+	<style type="text/css">
+		.cf:before,
+		.cf:after {
+			content: '';
+			display: table;
+		}
+
+		.cf:after {
+			clear: both;
+		}
+
+		body {
+			font-family: helvetica;
+			font-size: 8px;
+		}
+
+		span {
+			clear: left;
+			float: left;
+		}
+
+		#nutri-label {
+			width: 163px;
+			height: 330px;
+
+			border: 1px solid black;
+
+			padding: 3px;
+		}
+
+		#header-info {
+			border-bottom: 7px solid black;
+		}
+
+		#label-title {
+			font-size: 23px;
+			font-weight: 900;
+			line-height: 0.8em;
+		}
+
+		.label-title-subinfo {
+			font-size: 8px;
+		}
+
+		#main-section {
+			border-bottom: 7px solid black;
+		}
+
+		#main-section-label {
+			font-size: 6px;
+			font-weight: 900;
+			display: block;
+			width: 159px;
+			border-bottom: 0.5px solid #000;
+			padding: 2px;
+		}
+
+		#calorie-line {
+			width: 100%;
+			border-bottom: 3px solid black;
+		}
+
+		#calorie-from-fat-label {
+			float: right;
+			clear: right;
+		}
+
+		#info-legend {
+			font-weight: bold;
+			font-size: 0.8em;
+			/*float: right;*/
+			text-align: right;
+			width: 100%;
+		}
+
+		.percent-val {
+			clear: right;
+			float: right;
+			font-weight: bold;
+		}
+
+		.val-percent-line {
+			border-top: 0.5px solid black;
+			width: 163px;
+			padding: 1px 0;
+		}
+
+		.val-line {
+			border-top: 0.5px solid black;
+			width: 163px;
+		}
+
+		.secondary-label {
+			margin-left: 10px;
+			width: 153px;
+		}
+
+		#vitamins-etc {
+
+		}
+
+		.vitamin-line {
+			width: 163px;
+			border-bottom: 0.5px solid black;
+			padding: 1px 0;
+		}
+
+		.vitamin-label {
+		}
+
+		.vitamin-percent {
+			float: right;
+			clear: right;
+		}
+
+		#disclaimer {
+			padding: 4px 0;
+		}
+
+		#disclaimer p {
+			margin: 0;
+			font-size: 6px;
+			padding: 0 3px;
+		}
+
+		#disclaimer p:not(:first-child) {
+			margin-left: 4px;
+		}
+
+		#table-header {
+			font-size: 6px;
+			width: 100%;
+			border-bottom: 0.5px solid black;
+		}
+
+		#table-header span {
+			float: none;
+			clear: none;
+		}
+
+		#table-header span:first-child {
+			padding-left: 63px;
+		}
+
+		#table-header span {
+			padding-left: 9px;
+		}
+
+		#table-header span:last-child {
+			padding-left: 15px;
+		}
+
+		#daily-stuff {
+			border-spacing: 6px 0;
+			font-size: 6px;
+		}
+
+		#dietary-fiber-row td:first-child,
+		#sat-fat-row td:first-child {
+			/*border-spacing: 0px 0px 0px 0px;*/
+			padding-left: 10px;
+		}
+
+
+	</style>
+	<div id="nutri-label">
+		<div id="header-info" class="cf">
+			<span id="label-title">Nutrition Facts</span>
+			<span class="label-title-subinfo">Serving Size 2/3 cup (55g)</span>
+			<span class="label-title-subinfo">Servings Per Container About 8</span>
+		</div>
+
+		<div id="main-section" class="cf">
+			<span id="main-section-label">Amount Per Serving</span>
+
+			<span id="calorie-line" class="cf">
+				<span id="calorie-label"><b>Calories</b> 230</span>
+				<span id="calorie-from-fat-label">Calories from Fat 72</span>
+			</span>
+
+			<span id="info-legend">% Daily Value*</span>
+
+			<span class="val-percent-line">
+				<span id="fat-label"><b>Total Fat</b> 8g</span>
+				<span class="percent-val" id="fat-percent">12%</span>
+			</span>
+
+			<span class="val-percent-line secondary-label">
+				<span id="sat-fat-label">Saturated Fat 1g</span>
+				<span class="percent-val" id="sat-fat-percent">5%</span>
+			</span>
+
+			<span class="val-line secondary-label">
+				<span id="trans-fat-label"><em>Trans Fat</em> 0g</span>
+			</span>
+
+			<span class="val-percent-line">
+				<span id="cholesterol-label"><b>Cholesterol</b> 0mg</span>
+				<span class="percent-val" id="cholesterol-percent">0%</span>
+			</span>
+
+			<span class="val-percent-line">
+				<span id="sodium-label"><b>Sodium</b> 160mg</span>
+				<span class="percent-val" id="sodium-percent">7%</span>
+			</span>
+
+			<span class="val-percent-line">
+				<span id="total-carb-label"><b>Total Carbohydrate</b> 37g</span>
+				<span class="percent-val" id="total-carb-percent">12%</span>
+			</span>
+
+			<span class="val-percent-line secondary-label">
+				<span id="diet-fiber-label">Dietary Fiber 4g</span>
+				<span class="percent-val" id="diet-fiber-percent">16%</span>
+			</span>
+
+			<span class="val-percent-line secondary-label">
+				<span id="sugar-label">Sugars 1g</span>
+			</span>
+
+			<span class="val-percent-line">
+				<span id="protein-label"><b>Protein</b> 3g</span>
+			</span>
+		</div>
+
+		<div id="vitamins-etc" class="cf">
+			<span class="vitamin-line cf">
+				<span class="vitamin-label">Vitamin A</span><span class="vitamin-percent">10%</span>
+			</span>
+			<span class="vitamin-line cf">
+				<span class="vitamin-label">Vitamin C</span><span class="vitamin-percent">8%</span>
+			</span>
+			<span class="vitamin-line cf">
+				<span class="vitamin-label">Calcium</span><span class="vitamin-percent">20%</span>
+			</span>
+			<span class="vitamin-line cf">
+				<span class="vitamin-label">Iron</span><span class="vitamin-percent">45%</span>
+			</span>
+		</div>
+
+		<div id="disclaimer">
+			<p>* Percent Daily Values are based on a 2,000 calorie diet.</p>
+			<p>Your daily value may be higher or lower depending on</p>
+			<p>your calorie needs.</p>
+		</div>
+
+		<div id="table-header">
+			<span>Calories:</span>   <span>2,000</span>   <span>2,500</span>
+		</div>
+		<table id="daily-stuff">
+			<tr id="trans-fat-row">
+				<td>Total Fat</td>   <td>Less than</td>   <td>65g</td>   <td>80g</td>
+			</tr>
+			<tr id="sat-fat-row">
+				<td>Sat Fat</td>   <td>Less than</td>   <td>20g</td>   <td>25g</td>
+			</tr>
+			<tr id="chol-row">
+				<td>Cholesterol</td>   <td>Less than</td>   <td>300mg</td>   <td>300mg</td>
+			</tr>
+			<tr id="sodium-row">
+				<td>Sodium</td>   <td>Less than</td>   <td>2,400mg</td>   <td>2,400mg</td>
+			</tr>
+			<tr id="total-carb-row">
+				<td>Total Carohydrate</td>   <td></td>   <td>300g</td>   <td>375g</td>
+			</tr>
+			<tr id="dietary-fiber-row">
+				<td>Dietary Fiber</td>   <td></td>   <td>25g</td>   <td>30g</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
