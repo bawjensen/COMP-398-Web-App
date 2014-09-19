@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Distance and Color</title>
+    
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+
+    <link href="css/style.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <!-- Hey everyone! -->
+
+    <!-- We do our work here -->
+    <!-- To create a new slide, create a div and give it the class "step" (you can just copy an existing one from below) -->
+    <!-- You'll also want to change it's position, rotation, whatever. Read the old_index.html file to see how that works. -->
+
+    <!-- Absolute Distances (Julia will go first) -->
+
+    <div class="step" data-x="0" data-y="0">
+        <p>There are many ways to express distance in CSS. The two main subgroups are absolute and relative.</p>
+    </div>
+
+    <div class="step" data-x="1500" data-y="0">
+        <p>Absolute distance means it is the same for CSS everywhere.
+            The absolute distance units are cm, mm, in, pt, pc, and px</p>
+    </div>
+
+    <div class="step" data-x="1500" data-y="-1000" data-rotate-x="-180">
+        <p>The relation between the absolute units is: 1in = 2.54cm = 25.4mm = 72pt = 6pc</p>
+        <p>These are not recommended for on screen use because the size of computer screens 
+            vary too much.</p>
+    </div>
+
+    <div class="step" data-x="2700" data-y="-5000" data-z="3000" data-rotate-x="-127">
+        <p>A px is a small unit on your screen</p>
+        <p>Though a px depends on the device you are using, it is absolute because 
+            1px will always have the same appearance on any screen</p>
+    </div>
+
+    <div class="step" data-x="1000" data-y="-4000" data-z="5000" data-rotate-x="-127">
+        <p>So, why use a px?</p>
+    </div>
+
+    <div class="step" data-x="400" data-y="-5000" data-z="3000" data-rotate-x="-127">
+        <ul>
+            <li>px will always look good, even documents from the 1990's  that use px
+            still look good on computers today</li>
+            <li>If you print out anything from a document that uses px, the printed copy
+                will look almost exactly as it did on the screen</li>
+            <li>Aligning text and pictures is easy and looks good every time when you
+                style with px</li>
+        </ul>
+
+        
+    </div>
+
+    <div class="step" data-x="0" data-y="1000" data-z="8000">
+        <p>Fun Fact: px got it's name from a pixel in the 1990's which was the smallest dot 
+            that could be displayed on a screen, it was1/100th of an inch.</p>
+    </div>
+
+
+
+
+    <!-- Relative Distances (Bryan will go second) -->
+
+    <div class="step" data-x="0" data-y="1000">
+        <p>Relative positions are a little more tricky than simple pixels.</p>
+        <p>There are two main relative positioning options: <code>em</code> and <code>%</code>.</p>
+    </div>
+
+    <div class="step" data-x="1000" data-y="1000" data-rotate-x="-30">
+        <p>For instance, <code>em</code> defines the distance between two elements based on the current font size.</p>
+        For example: <code>height: 5em;</code>
+        <p>sets the height of the selected to 5 times the height of a line of text, defined as the font-size of that element.</p>
+    </div>
+
+    <div class="step" data-x="2000" data-y="1000" data-rotate-x="-60">
+        <p>Useful for:</p>
+        <ul>
+            <li>Divs containing only text (i.e. a container around a header)</li>
+            <li>Resizing every element on a page based on one element's font size
+                (useful for making a size equally viewable on multiple screen types)</li>
+            <li>Defining a 'base' font-size and scaling every other font size off of that</li>
+            <li>etc.</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="3000" data-y="1000" data-rotate-x="-90">
+        <p><code>%</code> defines things as a percentage of the parent element's distance.</p>
+        <p>So <code>width: 100%;</code> will make sure the child has the exact same width as the parent (with any padding or margin tacked on afterwards).</p>
+        <p>This is very useful.</p>
+    </div>
+
+    <div class="step future-hidden" data-x="0" data-y="1000" data-rotate-x="-90">
+        <p>Besides defining a distance based on the size of the font or the parent element, you can also use
+        <code>vh</code> and <code>vw</code> to define things in terms of the 'viewport'.</p>
+    </div>
+
+    <div class="step" data-x="0" data-y="1000" data-z="-1000" data-rotate-x="-90">
+        <p>The viewport takes up the entire inside of the browser window, and is the 'port' through which we 'view' the webpage.</p>
+    </div>
+
+    <div id="viewport-ex" class="step" data-x="0" data-y="1000" data-z="-1000" data-rotate-x="-180">
+        <p>Each <code>vh</code> or <code>vw</code> is 1/100th of the screen's height or width. This blue box was created as a 100vh and 100vw box, and will resize based on the screen.</p>
+    </div>
+
+    <div id="other-new" class="step" data-x="-3000" data-y="1000" data-z="3000" data-rotate-x="-180">
+        <p>And we also have other cool new features coming in the form of</p>
+        <code>rem</code> which defines everything in terms of one global, 'root', em.
+        <p>This is useful for the resizing of entire pages.</p>
+    </div>
+
+    <div id="other-new-but" class="step" data-x="-3000" data-y="1000" data-z="3000">
+        <p>But many of these features have only recently been adopted by all of the major browsers (Google Chrome, Firefox, IE, Safari, Opera) and won't be usable in most sites for quite a while (many users take forever to update their software).</p>
+    </div>
+
+
+
+    <!-- Colors (Jinnan goes third) -->
+
+    <div class="step" data-x="0" data-y="3000">
+        <p>Now, something about <b>colors...</b></p>
+        <p>Two different types of colors: </p>
+        <ul>
+            <li>Normal Colors (just words)</li>
+            <li>Hexadecimal Colors (#numbers)</li>
+            <li>RGB colors</li>
+            <li>Other minor types of colors</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="1000" data-y="3000">
+        <p><b>Normal Colors</b></p>
+        <p>Something built in already:</p>
+        <ul>
+            <li><code>.julia {color: blue;}</code></li>
+            <li><code>#bryan {background-color: silver;}</code></li>
+        </ul>
+        <p>Full list of normal colors can be found in w3schools</p>
+    </div>
+
+    <div class="step" data-x="2000" data-y="3000" data-rotate-x="-90" data-rotate-x="-90">
+        <p><b>Hexadecimal Colors</b></p>
+        <p>Start with <code>#</code></p>
+        <p>6 digits, each is a hexadecimal number</p>
+        <ul>
+            <li>hex triplet: a six-digit, three-byte hexadecimal number</li>
+            <li>representing red, green, blue (RGB)</li>
+            <li>from <code>00</code> to <code>FF</code>, increasing by intensity</li>
+            <li>represents the least (0) to the most (255) intensity of each of the color components</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="3000" data-y="3000" data-rotate-x="-90">
+        <p><b>Hexadecimal Colors</b></p>
+        <p>Example: </p>
+        <p>red=36, green=104, blue=160</p>
+        <p>Convert to the hexadecimal number: 24, 68, A0 </p>
+        <p><code>#2468A0</code></p>
+        <p>Turns out to be...</p>
+        <svg width="100" height="100">
+            <rect width="100" height="100" style="fill:#2468A0;stroke-width:3;stroke:#2468A0" />
+        </svg>
+    </div>
+
+     <div class="step" data-x="4000" data-y="3000" data-rotate-x="-90">
+        <p><b>Hexadecimal Colors</b></p>
+        <p>Shorthand hexadecimal form</p>
+        <p>Three (hexadecimal) digits form is used, expanding this form to the six-digit form is as simple as <em>doubling each digit</em>: <code>09C</code> becomes <code>0099CC</code> as presented on the following CSS example:</p>
+        <ul>
+            <li><code>.Jinnan { color: #09C;    }</code></li>
+            <li><code>.Khaled { color: #0099CC; }</code></li>
+        </ul>
+        <p>Again, turns out to be...</p>
+        <svg width="100" height="100">
+            <rect width="100" height="100" style="fill:#0099CC;stroke-width:3;stroke:#0099CC" />
+        </svg>
+    </div>
+
+     <div class="step" data-x="5000" data-y="3000" data-rotate-x="-90">
+        <p><b>Hexadecimal Colors</b></p>
+        <p>Easy Quiz!!</p>
+        <p>These two hexadecimal colors:
+            <ul>
+                <li>A. <code>#C0C0C0</code></li>
+                <li>B. <code>#383838</code></li>
+            </ul>
+        </p>
+        <p>Which is darker?</p>
+        <p>Guess what color they are?</p>
+    </div>
+
+    <div class="step" data-x="6000" data-y="3000" data-rotate-x="-90">
+        <p><b>Hexadecimal Colors</b></p>
+        <p>Easy Quiz Answer!!</p>
+        <p>Two hexadecimal colors:
+            <ul>
+                <li>A. <code>#C0C0C0</code>
+                    <svg width="50" height="50">
+                        <rect width="50" height="50" style="fill:#C0C0C0;stroke-width:3;stroke:#C0C0C0" />
+                    </svg></li>
+                <li>B. <code>#383838</code>
+                    <svg width="50" height="50">
+                        <rect width="50" height="50" style="fill:#383838;stroke-width:3;stroke:#383838" />
+                    </svg></li>
+            </ul>
+        </p>
+    </div>
+
+     <div class="step" data-x="7000" data-y="3000" data-rotate-x="-90">
+        <p><b>RGB Colors</b></p>
+        <p>Form: <code>rgb(#,#,#)</code></p>
+        <p>Can be converted to hexcadecimal numbers, shown in the example just now</p>
+        <p>Example:</p>
+        <ul>
+            <li>This is in <code>svg</code>: <code>fill:rgb(0,0,255)</code></li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="8000" data-y="3000" data-rotate-x="-90">
+        <p><b>RGB<em>A</em> Colors</b></p>
+        <p>A is alpha, representing opacity</code></p>
+        <p>Typically expressed using 8 hexadecimal digits, with each pair of the hexadecimal digits representing the values of the Alpha, Red, Green and Blue channel, respectively</p>
+        <p>Example:
+        <ul>
+            <li><code>80FFFF00</code></li>
+        </ul>
+        </p>
+    </div>
+
+    <div class="step" data-x="9000" data-y="3000" data-rotate-x="-90">
+        <p><b>RGB<em>A</em> Colors</b></p>
+        <p>Example:
+        <ul>
+            <li><code>#80FFFF00</code></li>
+        </ul>
+        </p>
+        <p>represents 50.2% opaque (non-premultiplied) yellow</p>
+        <p><code>80</code> hex value, which is 128 in decimal, represents a 50.2% alpha</p>
+    </div>
+
+</div>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
