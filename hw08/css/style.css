@@ -281,6 +281,11 @@ a:focus {
   width: 0.099in;
 }
 
+#equ
+{
+  border: 2px solid;
+  box-shadow: 10px 10px 5px #888888;
+}
 #img
 {
   display: block;
