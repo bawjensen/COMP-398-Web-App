@@ -213,6 +213,23 @@ a:focus {
   backface-visibility: hidden;
 }
 
+#impress div code {
+  font-family: monospace;
+}
+
+#impress div ul {
+  list-style: disc;
+}
+
+#impress div ul li {
+  display: list-item;
+  font-size: 0.8em;
+}
+
+#impress div ul li ul li {
+  margin-left: 40px;
+}
+
 /* ---------- Julia's Styling --------------------------------- */
 
 #C 
@@ -283,17 +300,10 @@ a:focus {
   opacity: 0;
 }
 
-.step code {
-  font-family: monospace;
-}
-
-.step ul {
-  list-style: disc;
-}
-
-.step ul li {
-  display: list-item;
-  font-size: 0.8em;
+#em-box-example {
+  height: 4em;
+  border: 3px dashed black;
+  line-height: 1em;
 }
 
 #viewport-ex {

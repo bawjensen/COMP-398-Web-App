@@ -102,19 +102,22 @@
 
     <div class="step" data-x="1000" data-y="1000" data-rotate-x="-30">
         <p>For instance, <code>em</code> defines the distance between two elements based on the current font size.</p>
-        For example: <code>height: 5em;</code>
-        <p>sets the height of the selected to 5 times the height of a line of text, defined as the font-size of that element.</p>
+        <div id="em-box-example">For example: <code>height: 4em;</code> sets the height of the selected box to 4 times the height of the font, such as is the case with this box.</div>
     </div>
 
     <div class="step" data-x="2000" data-y="1000" data-rotate-x="-60">
         <p>Useful for:</p>
         <ul>
-            <li>Divs containing only text (i.e. a container around a header)</li>
+            <li>Divs containing only text (i.e. a container around a preview of text)</li>
             <li>Resizing every element on a page based on one element's font size
                 (useful for making a size equally viewable on multiple screen types)</li>
             <li>Defining a 'base' font-size and scaling every other font size off of that</li>
             <li>etc.</li>
         </ul>
+    </div>
+
+    <div class="step" data-x="2000" data-y="1000" data-rotate-x="120">
+        <a href="http://whale.wheatoncollege.edu/competitions">Example in action</a>
     </div>
 
     <div class="step" data-x="3000" data-y="1000" data-rotate-x="-90">
@@ -125,11 +128,11 @@
 
     <div class="step" data-x="3000" data-y="1000" data-rotate-x="90">
         <p>
-            Test1
+            <a href="http://whale.wheatoncollege.edu/" target="_blank">Example of % distances</a>
         </p>
     </div>
 
-    <div class="step" data-x="2000" data-y="1000" data-rotate-x="120">
+<!--     <div class="step" data-x="2000" data-y="1000" data-rotate-x="120">
         <p>
             Test1
         </p>
@@ -145,14 +148,14 @@
         <p>
             Test1
         </p>
-    </div>
+    </div> -->
 
-    <div class="step future-hidden" data-x="0" data-y="1000" data-rotate-x="-90">
+    <div class="step future-hidden" data-x="0" data-y="1000" data-rotate-x="90">
         <p>Besides defining a distance based on the size of the font or the parent element, you can also use
         <code>vh</code> and <code>vw</code> to define things in terms of the 'viewport'.</p>
     </div>
 
-    <div class="step" data-x="0" data-y="1000" data-z="-2000" data-rotate-x="-90">
+    <div class="step" data-x="0" data-y="1000" data-z="-2000" data-rotate-x="90">
         <p>The viewport takes up the entire inside of the browser window, and is the 'port' through which we 'view' the webpage.</p>
     </div>
 
@@ -160,13 +163,13 @@
         <p>Each <code>vh</code> or <code>vw</code> is 1/100th of the screen's height or width. This blue box was created as a 100vh and 100vw box, and will resize based on the screen.</p>
     </div>
 
-    <div id="other-new" class="step" data-x="-3000" data-y="1000" data-z="3000" data-rotate-x="-180">
+    <div id="other-new" class="step" data-x="0" data-y="1000" data-z="3000" data-rotate-x="-180">
         <p>And we also have other cool new features coming in the form of</p>
         <code>rem</code> which defines everything in terms of one global, 'root', em.
         <p>This is useful for the resizing of entire pages.</p>
     </div>
 
-    <div id="other-new-but" class="step" data-x="-3000" data-y="1000" data-z="3000">
+    <div id="other-new-but" class="step" data-x="0" data-y="1000" data-z="3000">
         <p>But many of these features have only recently been adopted by all of the major browsers (Google Chrome, Firefox, IE, Safari, Opera) and won't be usable in most sites for quite a while (many users take forever to update their software).</p>
     </div>
 
