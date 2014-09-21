@@ -249,13 +249,19 @@ a:focus {
 #is
 {
   display:inline-block;
-  width: 50px;
+  width: 20mm;
 }
 
 #ta
 {
   display:inline-block;
-  width: 100px;
+  width: 59px;
+}
+
+#n
+{
+  display: inline-block;
+  width: 0.099in;
 }
 
 
