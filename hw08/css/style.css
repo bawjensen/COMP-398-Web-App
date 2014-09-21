@@ -264,6 +264,13 @@ a:focus {
   width: 0.099in;
 }
 
+#img
+{
+  display: block;
+
+  height: 1in;
+}
+
 
 /* ---------- Bryan's Styling --------------------------------- */
 
