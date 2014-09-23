@@ -180,40 +180,53 @@
 
     <!-- Colors (Jinnan goes third) -->
 
-    <div class="step" data-x="0" data-y="3000">
-        <p>Now, something about <b>colors...</b></p>
-        <p>Two different types of colors: </p>
+    <div class="step" data-x="0" data-y="3000" data-rotate-x="90">
+        <p>Time for <b><span id="C">C</span><span id="o">o</span><span id="l">l</span><span id="o2">o</span><span id="r">r</span><span id="s">s</span>...</b></p>
+        <p>Several different types of colors: </p>
         <ul>
             <li>Normal Colors (just words)</li>
             <li>Hexadecimal Colors (#numbers)</li>
             <li>RGB colors</li>
-            <li>Other minor types of colors</li>
+            <li>HSL colors</li>
+            <li>HSV colors</li>
         </ul>
     </div>
 
-    <div class="step" data-x="1000" data-y="3000">
-        <p><b>Normal Colors</b></p>
+
+    <div class="step" data-x="1000" data-y="3000" data-z="-1000">
+        <p><b><center>Normal <span id="C">C</span><span id="o">o</span><span id="l">l</span><span id="o2">o</span><span id="r">r</span><span id="s">s</span></center></b></p>
         <p>Something built in already:</p>
         <ul>
-            <li><code>.julia {color: blue;}</code></li>
-            <li><code>#bryan {background-color: silver;}</code></li>
+            <li><code>.julia {color: <span id = "blueColor">blue</span>;}</code></li>
+            <li><code>#bryan {background-color: <span id = "silverColor">silver</span>;}</code></li>
         </ul>
-        <p>Full list of normal colors can be found in w3schools</p>
+        <p>For a real example, <a href = "http://www.w3schools.com/html/tryit.asp?filename=tryhtml_links_colors">code it!</a></p>
     </div>
 
-    <div class="step" data-x="2000" data-y="3000" data-rotate-x="-90" data-rotate-x="-90">
-        <p><b>Hexadecimal Colors</b></p>
-        <p>Start with <code>#</code></p>
+
+    <div class="step" data-x="1000" data-y="4000" data-rotate-x="-180">
+        <p><b><center>Hexadecimal <span id="C">C</span><span id="o">o</span><span id="l">l</span><span id="o2">o</span><span id="r">r</span><span id="s">s</span></center></b></p>
+        <p>Syntax: start with <code>#</code>, followed by...</p>
         <p>6 digits, each is a hexadecimal number</p>
         <ul>
-            <li>hex triplet: a six-digit, three-byte hexadecimal number</li>
-            <li>representing red, green, blue (RGB)</li>
+            <li>the six digits are divided into 3 parts: representing <span id="red">red</span>, <span id="green">green</span>, <span id="blue">blue</span> (RGB)</li>
             <li>from <code>00</code> to <code>FF</code>, increasing by intensity</li>
+            <li>actually means you turn it "on"(<code>FF</code>) and "off"(<code>00</code>)</li>
             <li>represents the least (0) to the most (255) intensity of each of the color components</li>
         </ul>
     </div>
 
-    <div class="step" data-x="3000" data-y="3000" data-rotate-x="-90">
+
+    <div class="step" data-x="2000" data-y="4000" data-z="180" data-rotate-x="-90" data-rotate-z="-90">
+        <p><b><center>Hexadecimal <span id="C">C</span><span id="o">o</span><span id="l">l</span><span id="o2">o</span><span id="r">r</span><span id="s">s</span></center></b></p>
+        <p>To be specific, for the first two digits (RED): </p>
+        <p><code>00</code> = "turn red off, no red at all"</p>
+        <p><code>FF</code> = "turn red on, FULLY on"</p>
+        <p>Time for an example...</p>
+        <p>(It's also useful color picker tool) <a href = "http://www.w3schools.com/tags/ref_colorpicker.asp">Color Generator</a></p>
+    </div>
+
+<!--     <div class="step" data-x="4000" data-y="3000" data-rotate-x="-90">
         <p><b>Hexadecimal Colors</b></p>
         <p>Example: </p>
         <p>red=36, green=104, blue=160</p>
@@ -223,82 +236,124 @@
         <svg width="100" height="100">
             <rect width="100" height="100" style="fill:#2468A0;stroke-width:3;stroke:#2468A0" />
         </svg>
-    </div>
+    </div> -->
 
-     <div class="step" data-x="4000" data-y="3000" data-rotate-x="-90">
-        <p><b>Hexadecimal Colors</b></p>
-        <p>Shorthand hexadecimal form</p>
+     <div class="step" data-x="2000" data-y="-1000" data-rotate-y="-90">
+        <p><b><center>Hexadecimal <span id="C">C</span><span id="o">o</span><span id="l">l</span><span id="o2">o</span><span id="r">r</span><span id="s">s</span></center></b></p>
+        <p><span id="shortHand">Shorthand hexadecimal form</span></p>
         <p>Three (hexadecimal) digits form is used, expanding this form to the six-digit form is as simple as <em>doubling each digit</em>: <code>09C</code> becomes <code>0099CC</code> as presented on the following CSS example:</p>
         <ul>
             <li><code>.Jinnan { color: #09C;    }</code></li>
             <li><code>.Khaled { color: #0099CC; }</code></li>
         </ul>
-        <p>Again, turns out to be...</p>
-        <svg width="100" height="100">
-            <rect width="100" height="100" style="fill:#0099CC;stroke-width:3;stroke:#0099CC" />
-        </svg>
     </div>
 
-     <div class="step" data-x="5000" data-y="3000" data-rotate-x="-90">
-        <p><b>Hexadecimal Colors</b></p>
-        <p>Easy Quiz!!</p>
-        <p>These two hexadecimal colors:
-            <ul>
-                <li>A. <code>#C0C0C0</code></li>
-                <li>B. <code>#383838</code></li>
-            </ul>
-        </p>
-        <p>Which is darker?</p>
-        <p>Guess what color they are?</p>
+     <div class="step" data-x="2000" data-y="-1000" data-rotate-z="90">
+        <p>Here's an <a href = "http://www.w3schools.com/svg/tryit.asp?filename=trysvg_myfirst">example</a>...</p>
     </div>
 
-    <div class="step" data-x="6000" data-y="3000" data-rotate-x="-90">
-        <p><b>Hexadecimal Colors</b></p>
-        <p>Easy Quiz Answer!!</p>
-        <p>Two hexadecimal colors:
+     <div class="step" data-x="3000" data-y="3000" data-rotate-y="90">
+        <p><b><center>Hexadecimal <span id="C">C</span><span id="o">o</span><span id="l">l</span><span id="o2">o</span><span id="r">r</span><span id="s">s</span></center></b></p>
+        <p>Your favorite part...</p>
+        <marquee behavior=alternate id="quizTime">QUIZ TIME</marquee> <!-- Make "Quiz" colorful -->
+        <p>Guess what color it is? <code>#1C39FD</code></p>
+        <p>
             <ul>
-                <li>A. <code>#C0C0C0</code>
-                    <svg width="50" height="50">
-                        <rect width="50" height="50" style="fill:#C0C0C0;stroke-width:3;stroke:#C0C0C0" />
-                    </svg></li>
-                <li>B. <code>#383838</code>
-                    <svg width="50" height="50">
-                        <rect width="50" height="50" style="fill:#383838;stroke-width:3;stroke:#383838" />
-                    </svg></li>
+                <li>A. <svg width="50" height="50">
+                         <rect width="50" height="50" style="fill:#1C39FD;stroke-width:3;stroke:#1C39FD" />
+                       </svg>
+                   </li>
+
+                <li>B. <svg width="50" height="50">
+                         <rect width="50" height="50" style="fill:#242E27;stroke-width:3;stroke:#242E27" />
+                       </svg>
+                </li>
+                <li>C. <svg width="50" height="50">
+                         <rect width="50" height="50" style="fill:#E919B7;stroke-width:3;stroke:#E919B7" />
+                       </svg>
+                </li>
             </ul>
         </p>
     </div>
 
-     <div class="step" data-x="7000" data-y="3000" data-rotate-x="-90">
-        <p><b>RGB Colors</b></p>
+     <div class="step" data-x="3000" data-y="3000" data-rotate-z="-90">
+        <p><b><center>Hexadecimal <span id="C">C</span><span id="o">o</span><span id="l">l</span><span id="o2">o</span><span id="r">r</span><span id="s">s</span></center></b></p>
+        <p>Your least favorite ...</p>
+        <marquee behavior=alternate id="answerTime">ANSWER TIME</marquee> <!-- Make "Quiz" colorful -->
+        <p>This color: <code>#1C39FD</code></p>
+        <p>
+            <ul>
+                <li>A. <code>#1C39FD</code> <svg width="50" height="50">
+                         <rect width="50" height="50" style="fill:#1C39FD;stroke-width:3;stroke:#1C39FD" />
+                       </svg>
+                   </li>
+
+                <li>B. <code>#242E27</code> <svg width="50" height="50">
+                         <rect width="50" height="50" style="fill:#242E27;stroke-width:3;stroke:#242E27" />
+                       </svg>
+                </li>
+                <li>C. <code>#E919B7</code> <svg width="50" height="50">
+                         <rect width="50" height="50" style="fill:#E919B7;stroke-width:3;stroke:#E919B7" />
+                       </svg>
+                </li>
+            </ul>
+        </p>
+        <p>So the answer is A!</p>
+    </div>
+
+
+     <div class="step" data-x="4000" data-y="-2000" data-rotate-y="60">
+        <p><b><center>RGB <span id="C">C</span><span id="o">o</span><span id="l">l</span><span id="o2">o</span><span id="r">r</span><span id="s">s</span></center></b></p>
         <p>Form: <code>rgb(#,#,#)</code></p>
-        <p>Can be converted to hexcadecimal numbers, shown in the example just now</p>
+        <p>Can be converted to hexcadecimal numbers</p>
         <p>Example:</p>
         <ul>
             <li>This is in <code>svg</code>: <code>fill:rgb(0,0,255)</code></li>
         </ul>
+        <p>Here's an example: <a href = "http://www.w3schools.com/svg/tryit.asp?filename=trysvg_myfirst">real codes</a></p>
     </div>
 
-    <div class="step" data-x="8000" data-y="3000" data-rotate-x="-90">
-        <p><b>RGB<em>A</em> Colors</b></p>
+    <div class="step" data-x="4000" data-y="1000" data-rotate-x="90">
+        <p><b><center>RGB<em>A</em> <span id="C">C</span><span id="o">o</span><span id="l">l</span><span id="o2">o</span><span id="r">r</span><span id="s">s</span></center></b></p>
         <p>A is alpha, representing opacity</code></p>
-        <p>Typically expressed using 8 hexadecimal digits, with each pair of the hexadecimal digits representing the values of the Alpha, Red, Green and Blue channel, respectively</p>
+        <p>Syntax: after R,G,B, A is between 0 to 1</p>
         <p>Example:
         <ul>
-            <li><code>80FFFF00</code></li>
-        </ul>
+            <li><code>background: rgba(200, 54, 54, 0.5); </code></li>
+       </ul>
         </p>
+        <p>Interactive example<a href = "http://www.w3schools.com/svg/tryit.asp?filename=trysvg_myfirst">real codes</a></p>
     </div>
 
-    <div class="step" data-x="9000" data-y="3000" data-rotate-x="-90">
-        <p><b>RGB<em>A</em> Colors</b></p>
-        <p>Example:
+    <div class="step" data-x="5000" data-y="-3000" data-rotate-z="70">
+        <p><b><center>HSL <span id="C">C</span><span id="o">o</span><span id="l">l</span><span id="o2">o</span><span id="r">r</span><span id="s">s</span></center></b></p>
+        <p>Stands for hue(color) saturation(how pure the color is) lightness(0-100%)
+        <p>cylindrical-coordinate representations of points in an RGB color model</p>
         <ul>
-            <li><code>#80FFFF00</code></li>
+            <li><code>hsl(90,80%,50%)</code></li>
         </ul>
         </p>
-        <p>represents 50.2% opaque (non-premultiplied) yellow</p>
-        <p><code>80</code> hex value, which is 128 in decimal, represents a 50.2% alpha</p>
+        <p>color 90, 80% saturation, 50% lightness</p>
+        <p>Example: <a href = "http://www.w3schools.com/cssref/tryit.asp?filename=trycss_color_hsl">real codes</a></p>
+    </div>
+
+    <div class="step" data-x="5000" data-y="-1000" data-rotate-z="-180">
+        <p><b><center>HSL<em>A</em> <span id="C">C</span><span id="o">o</span><span id="l">l</span><span id="o2">o</span><span id="r">r</span><span id="s">s</span></center></b></p>
+        <p>Same with HSL, but with opacity at the end</p>
+        <p>
+        <ul>
+            <li><code>color: hsla(120,100%,50%,0.3); / * green with opacity 0.3*/</code></li>
+        </ul>
+        </p>
+        <p>Example: <a href = "http://www.w3schools.com/cssref/tryit.asp?filename=trycss_color_hsla">real codes</a></p>
+    </div>
+
+    <div class="step" data-x="6000" data-y="2000" data-rotate-x="-90">
+        <p><b><center>HSV <span id="C">C</span><span id="o">o</span><span id="l">l</span><span id="o2">o</span><span id="r">r</span><span id="s">s</span></center></b></p>
+        <p>hue saturation value</p>
+        <p>cylindrical-coordinate representations of points in an RGB color model</p>
+        <p>Not commonly used in CSS, but much used in Computer Graphics</p>
+        <p><a href="http://colorizer.org/">Cool website to see RGB, HSV, HSL all together</a></p>
     </div>
 
 </div>

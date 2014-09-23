@@ -334,6 +334,44 @@ a:focus {
 
 /* ---------- Jinnan's Styling -------------------------------- */
 
+#s{
+  color: #B547DA;
+}
+
+#blueColor{
+  color: blue;
+}
+
+#silverColor{
+  color: silver;
+}
+
+#red{
+  color:red;
+}
+
+#green {
+  color:green;
+}
+
+#blue {
+  color: blue;
+}
+
+#shortHand {
+  font-family: cursive;
+  background-color: violet;
+}
+
+#quizTime {
+  color: purple;
+  font-family: Cambria;
+}
+
+#answerTime {
+  color: green;
+  font-family: Cambria;
+}
 
 /* ---------- Khaled's Styling -------------------------------- */
 
