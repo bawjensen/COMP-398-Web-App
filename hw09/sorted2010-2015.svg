@@ -1,0 +1,78 @@
+<svg version="1.1"
+	baseProfile="full"
+	width="1300" height="1300"
+	xmlns="http://www.w3.org/2000/svg">
+	
+	<circle cx="200" cy="200" r="92.989" fill="#00FF00"/>
+	<text x="200" y="101.011" font-size="30" text-anchor="middle" fill="black">ENG:7153</text>
+	<circle cx="200" cy="400" r="48.867" fill="#00FF00"/>
+	<text x="200" y="345.133" font-size="30" text-anchor="middle" fill="black">POLS:3759</text>
+	<circle cx="200" cy="600" r="30.394" fill="#00FF00"/>
+	<text x="200" y="563.606" font-size="30" text-anchor="middle" fill="black">HISP:2338</text>
+	<circle cx="200" cy="800" r="22.503" fill="#00FF00"/>
+	<text x="200" y="771.497" font-size="30" text-anchor="middle" fill="black">MUSP:1731</text>
+	<circle cx="200" cy="1000" r="7.631" fill="#00FF00"/>
+	<text x="200" y="986.369" font-size="30" text-anchor="middle" fill="black">GER:587</text>
+	<circle cx="200" cy="1200" r="3.965" fill="#00FF00"/>
+	<text x="200" y="1190.035" font-size="30" text-anchor="middle" fill="black">CHIN:305</text>
+	<circle cx="400" cy="200" r="88.92" fill="#00FF00"/>
+	<text x="400" y="105.08" font-size="30" text-anchor="middle" fill="black">PSY:6840</text>
+	<circle cx="400" cy="400" r="46.982" fill="#00FF00"/>
+	<text x="400" y="347.018" font-size="30" text-anchor="middle" fill="black">MATH:3614</text>
+	<circle cx="400" cy="600" r="28.496" fill="#00FF00"/>
+	<text x="400" y="565.504" font-size="30" text-anchor="middle" fill="black">EDUC:2192</text>
+	<circle cx="400" cy="800" r="21.359" fill="#00FF00"/>
+	<text x="400" y="772.641" font-size="30" text-anchor="middle" fill="black">ARTH:1643</text>
+	<circle cx="400" cy="1000" r="7.54" fill="#00FF00"/>
+	<text x="400" y="986.46" font-size="30" text-anchor="middle" fill="black">WMST:580</text>
+	<circle cx="400" cy="1200" r="2.99" fill="#00FF00"/>
+	<text x="400" y="1191.01" font-size="30" text-anchor="middle" fill="black">JAPN:230</text>
+	<circle cx="600" cy="200" r="75.413" fill="#00FF00"/>
+	<text x="600" y="118.587" font-size="30" text-anchor="middle" fill="black">BIO:5801</text>
+	<circle cx="600" cy="400" r="37.453" fill="#00FF00"/>
+	<text x="600" y="356.547" font-size="30" text-anchor="middle" fill="black">ANTH:2881</text>
+	<circle cx="600" cy="600" r="28.002" fill="#00FF00"/>
+	<text x="600" y="565.998" font-size="30" text-anchor="middle" fill="black">PHIL:2154</text>
+	<circle cx="600" cy="800" r="20.345" fill="#00FF00"/>
+	<text x="600" y="773.655" font-size="30" text-anchor="middle" fill="black">COMP:1565</text>
+	<circle cx="600" cy="1000" r="6.331" fill="#00FF00"/>
+	<text x="600" y="987.669" font-size="30" text-anchor="middle" fill="black">RUSS:487</text>
+	<circle cx="600" cy="1200" r="2.756" fill="#00FF00"/>
+	<text x="600" y="1191.244" font-size="30" text-anchor="middle" fill="black">INT:212</text>
+	<circle cx="800" cy="200" r="53.56" fill="#00FF00"/>
+	<text x="800" y="140.44" font-size="30" text-anchor="middle" fill="black">CHEM:4120</text>
+	<circle cx="800" cy="400" r="35.035" fill="#00FF00"/>
+	<text x="800" y="358.965" font-size="30" text-anchor="middle" fill="black">FSEM:2695</text>
+	<circle cx="800" cy="600" r="26.962" fill="#00FF00"/>
+	<text x="800" y="567.038" font-size="30" text-anchor="middle" fill="black">ARTS:2074</text>
+	<circle cx="800" cy="800" r="18.421" fill="#00FF00"/>
+	<text x="800" y="775.579" font-size="30" text-anchor="middle" fill="black">THEA:1417</text>
+	<circle cx="800" cy="1000" r="5.85" fill="#00FF00"/>
+	<text x="800" y="988.15" font-size="30" text-anchor="middle" fill="black">MGMT:450</text>
+	<circle cx="800" cy="1200" r="2.47" fill="#00FF00"/>
+	<text x="800" y="1191.53" font-size="30" text-anchor="middle" fill="black">ARBC:190</text>
+	<circle cx="1000" cy="200" r="50.375" fill="#00FF00"/>
+	<text x="1000" y="143.625" font-size="30" text-anchor="middle" fill="black">ECON:3875</text>
+	<circle cx="1000" cy="400" r="33.748" fill="#00FF00"/>
+	<text x="1000" y="360.252" font-size="30" text-anchor="middle" fill="black">SOC:2596</text>
+	<circle cx="1000" cy="600" r="26.117" fill="#00FF00"/>
+	<text x="1000" y="567.883" font-size="30" text-anchor="middle" fill="black">REL:2009</text>
+	<circle cx="1000" cy="800" r="12.519" fill="#00FF00"/>
+	<text x="1000" y="781.481" font-size="30" text-anchor="middle" fill="black">AST:963</text>
+	<circle cx="1000" cy="1000" r="5.59" fill="#00FF00"/>
+	<text x="1000" y="988.41" font-size="30" text-anchor="middle" fill="black">CLAS:430</text>
+	<circle cx="1000" cy="1200" r="1.209" fill="#00FF00"/>
+	<text x="1000" y="1192.791" font-size="30" text-anchor="middle" fill="black">AFDS:93</text>
+	<circle cx="1200" cy="200" r="49.842" fill="#00FF00"/>
+	<text x="1200" y="144.158" font-size="30" text-anchor="middle" fill="black">HIST:3834</text>
+	<circle cx="1200" cy="400" r="32.279" fill="#00FF00"/>
+	<text x="1200" y="361.721" font-size="30" text-anchor="middle" fill="black">MUSC:2483</text>
+	<circle cx="1200" cy="600" r="23.959" fill="#00FF00"/>
+	<text x="1200" y="570.041" font-size="30" text-anchor="middle" fill="black">PHYS:1843</text>
+	<circle cx="1200" cy="800" r="12.038" fill="#00FF00"/>
+	<text x="1200" y="781.962" font-size="30" text-anchor="middle" fill="black">ITAS:926</text>
+	<circle cx="1200" cy="1000" r="4.732" fill="#00FF00"/>
+	<text x="1200" y="989.268" font-size="30" text-anchor="middle" fill="black">LAT:364</text>
+	<circle cx="1200" cy="1200" r="1.118" fill="#00FF00"/>
+	<text x="1200" y="1192.882" font-size="30" text-anchor="middle" fill="black">NEUR:86</text>
+</svg>

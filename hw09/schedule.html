@@ -2,89 +2,110 @@
 <html>
 <head>
 	<title>SVG Examples</title>
+
+	<style type="text/css">
+		h1 {
+			display: block;
+			width: 100%;
+			text-align: center;
+			margin-bottom: 0px;
+			padding-top: 40px;
+			border-top: 1px solid black;
+		}
+	</style>
 </head>
 <body>
-	<img src="sorted.svg"/><!-- Interesting approach, but makes it into an image, not a set of elements -->
+	<h1>Unsorted 2010-2015, &lt;img&gt; tag</h1>
+	<!-- Interesting approach, but makes it into an image, not a set of elements -->
+	<img src="unsorted2010-2015.svg"/>
 
+	<h1>Sorted 2010-2015, embedded &lt;svg&gt;</h1>
+	<!-- Bare embedded svg. Cumbersome to put directly in the HTML, can't work around it. -->
 	<svg version="1.1"
 		baseProfile="full"
 		width="1300" height="1300"
 		xmlns="http://www.w3.org/2000/svg">
 		
-		<circle cx="200" cy="200" r="32.4" fill="#00FF00"/>
-		<text x="200" y="161.6" font-size="30" text-anchor="middle" fill="black">POLS:216</text>
-		<circle cx="200" cy="400" r="3.6" fill="#00FF00"/>
-		<text x="200" y="390.4" font-size="30" text-anchor="middle" fill="black">CHIN:24</text>
-		<circle cx="200" cy="600" r="27.0" fill="#00FF00"/>
-		<text x="200" y="567.0" font-size="30" text-anchor="middle" fill="black">EDUC:180</text>
-		<circle cx="200" cy="800" r="22.2" fill="#00FF00"/>
-		<text x="200" y="771.8" font-size="30" text-anchor="middle" fill="black">ARTH:148</text>
-		<circle cx="200" cy="1000" r="37.05" fill="#00FF00"/>
-		<text x="200" y="956.95" font-size="30" text-anchor="middle" fill="black">SOC:247</text>
-		<circle cx="200" cy="1200" r="14.25" fill="#00FF00"/>
-		<text x="200" y="1179.75" font-size="30" text-anchor="middle" fill="black">INT:95</text>
-		<circle cx="400" cy="200" r="29.55" fill="#00FF00"/>
-		<text x="400" y="164.45" font-size="30" text-anchor="middle" fill="black">MUSC:197</text>
-		<circle cx="400" cy="400" r="18.9" fill="#00FF00"/>
-		<text x="400" y="375.1" font-size="30" text-anchor="middle" fill="black">REL:126</text>
-		<circle cx="400" cy="600" r="16.5" fill="#00FF00"/>
-		<text x="400" y="577.5" font-size="30" text-anchor="middle" fill="black">AST:110</text>
-		<circle cx="400" cy="800" r="2.7" fill="#00FF00"/>
-		<text x="400" y="791.3" font-size="30" text-anchor="middle" fill="black">CLAS:18</text>
-		<circle cx="400" cy="1000" r="3.75" fill="#00FF00"/>
-		<text x="400" y="990.25" font-size="30" text-anchor="middle" fill="black">ARBC:25</text>
+		<circle cx="200" cy="200" r="95.7" fill="#00FF00"/>
+		<text x="200" y="98.3" font-size="30" text-anchor="middle" fill="black">ENG:638</text>
+		<circle cx="200" cy="400" r="55.8" fill="#00FF00"/>
+		<text x="200" y="338.2" font-size="30" text-anchor="middle" fill="black">MATH:372</text>
+		<circle cx="200" cy="600" r="29.85" fill="#00FF00"/>
+		<text x="200" y="564.15" font-size="30" text-anchor="middle" fill="black">PHYS:199</text>
+		<circle cx="200" cy="800" r="22.35" fill="#00FF00"/>
+		<text x="200" y="771.65" font-size="30" text-anchor="middle" fill="black">PHIL:149</text>
+		<circle cx="200" cy="1000" r="13.5" fill="#00FF00"/>
+		<text x="200" y="980.5" font-size="30" text-anchor="middle" fill="black">MUSP:90</text>
+		<circle cx="200" cy="1200" r="3.75" fill="#00FF00"/>
+		<text x="200" y="1190.25" font-size="30" text-anchor="middle" fill="black">ARBC:25</text>
+		<circle cx="400" cy="200" r="93.6" fill="#00FF00"/>
+		<text x="400" y="100.4" font-size="30" text-anchor="middle" fill="black">PSY:624</text>
+		<circle cx="400" cy="400" r="39.9" fill="#00FF00"/>
+		<text x="400" y="354.1" font-size="30" text-anchor="middle" fill="black">HIST:266</text>
+		<circle cx="400" cy="600" r="29.85" fill="#00FF00"/>
+		<text x="400" y="564.15" font-size="30" text-anchor="middle" fill="black">COMP:199</text>
+		<circle cx="400" cy="800" r="22.2" fill="#00FF00"/>
+		<text x="400" y="771.8" font-size="30" text-anchor="middle" fill="black">ARTH:148</text>
+		<circle cx="400" cy="1000" r="12.15" fill="#00FF00"/>
+		<text x="400" y="981.85" font-size="30" text-anchor="middle" fill="black">ITAS:81</text>
 		<circle cx="400" cy="1200" r="3.75" fill="#00FF00"/>
 		<text x="400" y="1190.25" font-size="30" text-anchor="middle" fill="black">JAPN:25</text>
-		<circle cx="600" cy="200" r="60.6" fill="#00FF00"/>
-		<text x="600" y="133.4" font-size="30" text-anchor="middle" fill="black">ECON:404</text>
-		<circle cx="600" cy="400" r="56.4" fill="#00FF00"/>
-		<text x="600" y="337.6" font-size="30" text-anchor="middle" fill="black">CHEM:376</text>
-		<circle cx="600" cy="600" r="28.35" fill="#00FF00"/>
-		<text x="600" y="565.65" font-size="30" text-anchor="middle" fill="black">MGMT:189</text>
-		<circle cx="600" cy="800" r="88.05" fill="#00FF00"/>
-		<text x="600" y="705.95" font-size="30" text-anchor="middle" fill="black">BIO:587</text>
-		<circle cx="600" cy="1000" r="33.15" fill="#00FF00"/>
-		<text x="600" y="960.85" font-size="30" text-anchor="middle" fill="black">ANTH:221</text>
-		<circle cx="600" cy="1200" r="93.6" fill="#00FF00"/>
-		<text x="600" y="1100.4" font-size="30" text-anchor="middle" fill="black">PSY:624</text>
-		<circle cx="800" cy="200" r="16.2" fill="#00FF00"/>
-		<text x="800" y="177.8" font-size="30" text-anchor="middle" fill="black">THEA:108</text>
-		<circle cx="800" cy="400" r="3.45" fill="#00FF00"/>
-		<text x="800" y="390.55" font-size="30" text-anchor="middle" fill="black">NEUR:23</text>
-		<circle cx="800" cy="600" r="22.35" fill="#00FF00"/>
-		<text x="800" y="571.65" font-size="30" text-anchor="middle" fill="black">PHIL:149</text>
-		<circle cx="800" cy="800" r="29.85" fill="#00FF00"/>
-		<text x="800" y="764.15" font-size="30" text-anchor="middle" fill="black">PHYS:199</text>
+		<circle cx="600" cy="200" r="88.05" fill="#00FF00"/>
+		<text x="600" y="105.95" font-size="30" text-anchor="middle" fill="black">BIO:587</text>
+		<circle cx="600" cy="400" r="37.05" fill="#00FF00"/>
+		<text x="600" y="356.95" font-size="30" text-anchor="middle" fill="black">SOC:247</text>
+		<circle cx="600" cy="600" r="29.55" fill="#00FF00"/>
+		<text x="600" y="564.45" font-size="30" text-anchor="middle" fill="black">MUSC:197</text>
+		<circle cx="600" cy="800" r="18.9" fill="#00FF00"/>
+		<text x="600" y="775.1" font-size="30" text-anchor="middle" fill="black">REL:126</text>
+		<circle cx="600" cy="1000" r="9.6" fill="#00FF00"/>
+		<text x="600" y="984.4" font-size="30" text-anchor="middle" fill="black">GER:64</text>
+		<circle cx="600" cy="1200" r="3.6" fill="#00FF00"/>
+		<text x="600" y="1190.4" font-size="30" text-anchor="middle" fill="black">CHIN:24</text>
+		<circle cx="800" cy="200" r="64.2" fill="#00FF00"/>
+		<text x="800" y="129.8" font-size="30" text-anchor="middle" fill="black">FSEM:428</text>
+		<circle cx="800" cy="400" r="34.5" fill="#00FF00"/>
+		<text x="800" y="359.5" font-size="30" text-anchor="middle" fill="black">HISP:230</text>
+		<circle cx="800" cy="600" r="28.35" fill="#00FF00"/>
+		<text x="800" y="565.65" font-size="30" text-anchor="middle" fill="black">MGMT:189</text>
+		<circle cx="800" cy="800" r="16.5" fill="#00FF00"/>
+		<text x="800" y="777.5" font-size="30" text-anchor="middle" fill="black">AST:110</text>
 		<circle cx="800" cy="1000" r="7.05" fill="#00FF00"/>
 		<text x="800" y="986.95" font-size="30" text-anchor="middle" fill="black">WGS:47</text>
-		<circle cx="800" cy="1200" r="1.8" fill="#00FF00"/>
-		<text x="800" y="1192.2" font-size="30" text-anchor="middle" fill="black">AFDS:12</text>
-		<circle cx="1000" cy="200" r="13.5" fill="#00FF00"/>
-		<text x="1000" y="180.5" font-size="30" text-anchor="middle" fill="black">MUSP:90</text>
-		<circle cx="1000" cy="400" r="9.6" fill="#00FF00"/>
-		<text x="1000" y="384.4" font-size="30" text-anchor="middle" fill="black">GER:64</text>
-		<circle cx="1000" cy="600" r="39.9" fill="#00FF00"/>
-		<text x="1000" y="554.1" font-size="30" text-anchor="middle" fill="black">HIST:266</text>
-		<circle cx="1000" cy="800" r="95.7" fill="#00FF00"/>
-		<text x="1000" y="698.3" font-size="30" text-anchor="middle" fill="black">ENG:638</text>
-		<circle cx="1000" cy="1000" r="4.05" fill="#00FF00"/>
-		<text x="1000" y="989.95" font-size="30" text-anchor="middle" fill="black">RUSS:27</text>
-		<circle cx="1000" cy="1200" r="4.5" fill="#00FF00"/>
-		<text x="1000" y="1189.5" font-size="30" text-anchor="middle" fill="black">LAT:30</text>
-		<circle cx="1200" cy="200" r="12.15" fill="#00FF00"/>
-		<text x="1200" y="181.85" font-size="30" text-anchor="middle" fill="black">ITAS:81</text>
-		<circle cx="1200" cy="400" r="26.1" fill="#00FF00"/>
-		<text x="1200" y="367.9" font-size="30" text-anchor="middle" fill="black">ARTS:174</text>
-		<circle cx="1200" cy="600" r="34.5" fill="#00FF00"/>
-		<text x="1200" y="559.5" font-size="30" text-anchor="middle" fill="black">HISP:230</text>
-		<circle cx="1200" cy="800" r="29.85" fill="#00FF00"/>
-		<text x="1200" y="764.15" font-size="30" text-anchor="middle" fill="black">COMP:199</text>
-		<circle cx="1200" cy="1000" r="64.2" fill="#00FF00"/>
-		<text x="1200" y="929.8" font-size="30" text-anchor="middle" fill="black">FSEM:428</text>
-		<circle cx="1200" cy="1200" r="55.8" fill="#00FF00"/>
-		<text x="1200" y="1138.2" font-size="30" text-anchor="middle" fill="black">MATH:372</text>
+		<circle cx="800" cy="1200" r="3.45" fill="#00FF00"/>
+		<text x="800" y="1190.55" font-size="30" text-anchor="middle" fill="black">NEUR:23</text>
+		<circle cx="1000" cy="200" r="60.6" fill="#00FF00"/>
+		<text x="1000" y="133.4" font-size="30" text-anchor="middle" fill="black">ECON:404</text>
+		<circle cx="1000" cy="400" r="33.15" fill="#00FF00"/>
+		<text x="1000" y="360.85" font-size="30" text-anchor="middle" fill="black">ANTH:221</text>
+		<circle cx="1000" cy="600" r="27.0" fill="#00FF00"/>
+		<text x="1000" y="567.0" font-size="30" text-anchor="middle" fill="black">EDUC:180</text>
+		<circle cx="1000" cy="800" r="16.2" fill="#00FF00"/>
+		<text x="1000" y="777.8" font-size="30" text-anchor="middle" fill="black">THEA:108</text>
+		<circle cx="1000" cy="1000" r="4.5" fill="#00FF00"/>
+		<text x="1000" y="989.5" font-size="30" text-anchor="middle" fill="black">LAT:30</text>
+		<circle cx="1000" cy="1200" r="2.7" fill="#00FF00"/>
+		<text x="1000" y="1191.3" font-size="30" text-anchor="middle" fill="black">CLAS:18</text>
+		<circle cx="1200" cy="200" r="56.4" fill="#00FF00"/>
+		<text x="1200" y="137.6" font-size="30" text-anchor="middle" fill="black">CHEM:376</text>
+		<circle cx="1200" cy="400" r="32.4" fill="#00FF00"/>
+		<text x="1200" y="361.6" font-size="30" text-anchor="middle" fill="black">POLS:216</text>
+		<circle cx="1200" cy="600" r="26.1" fill="#00FF00"/>
+		<text x="1200" y="567.9" font-size="30" text-anchor="middle" fill="black">ARTS:174</text>
+		<circle cx="1200" cy="800" r="14.25" fill="#00FF00"/>
+		<text x="1200" y="779.75" font-size="30" text-anchor="middle" fill="black">INT:95</text>
+		<circle cx="1200" cy="1000" r="4.05" fill="#00FF00"/>
+		<text x="1200" y="989.95" font-size="30" text-anchor="middle" fill="black">RUSS:27</text>
+		<circle cx="1200" cy="1200" r="1.8" fill="#00FF00"/>
+		<text x="1200" y="1192.2" font-size="30" text-anchor="middle" fill="black">AFDS:12</text>
 	</svg>
 
-	<iframe src="unsorted.svg"/><!-- Better, but puts it into a tiny frame -->
+	<h1>Unsorted, &lt;object&gt; tag</h1>
+	<!-- Seems to be the best solution, looks to embed as actual svg elements -->
+	<object data="unsorted.svg" type="image/svg+xml"></object>
+
+	<h1>Sorted, &lt;iframe&gt; tag</h1>
+	<!-- Better than image, but puts it into a tiny frame w/ scrollbars -->
+	<iframe src="sorted.svg"></iframe>
 </body>
 </html>

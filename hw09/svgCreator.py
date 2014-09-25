@@ -35,7 +35,7 @@ def createSVGCircleLabel(positionX, positionY, label, count, size):
 
 
 def main():
-	with open('enrollment.json', 'r') as inFile:
+	with open('enrollment2010-2015.json', 'r') as inFile:
 		fileContents = inFile.read().lstrip('{').rstrip('}').split(',')
 
 		enrollmentDict = dict(
@@ -55,7 +55,7 @@ def main():
 	xmlns="http://www.w3.org/2000/svg">
 	"""
 
-	scalar = 0.15
+	scalar = 0.013
 	spacing = 200
 
 	for i in xrange(6):
@@ -71,7 +71,7 @@ def main():
 
 	svgElement += '\n</svg>'
 
-	with open('unsorted.svg', 'w') as outFile:
+	with open('unsorted2010-2015.svg', 'w') as outFile:
 		outFile.write(svgElement)
 
 if __name__ == '__main__':
