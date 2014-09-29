@@ -2,7 +2,7 @@
 	"features": [
 		{ "type": "Feature",
 			"geometry": {
-				"type": "Point", "coordinates": [
+				"type": "MultiPoint", "coordinates": [
 					[-71.185774, 41.966269],
 					[-71.186729, 41.967872]
 				]
