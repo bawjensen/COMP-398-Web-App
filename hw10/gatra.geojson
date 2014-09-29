@@ -2,7 +2,7 @@
   "type": "Feature",
   "geometry": {
     "type": "Point",
-    "coordinates": [41.966269, -71.185774]
+    "coordinates": [-41.966269, -71.185774]
   },
   "properties": {
     "name": "Dinagat Islands"
