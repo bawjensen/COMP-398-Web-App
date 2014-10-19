@@ -12,6 +12,8 @@ def main():
 
 	print ll
 
+	print ll.find("Zuran Enchanter")
+
 
 if __name__ == "__main__":
 	main()
