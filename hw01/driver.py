@@ -1,17 +1,19 @@
 import linkedlist
 
 def main():
+	# Create empty list
 	ll = linkedlist.LinkedList()
 
-	for i in xrange(50):
-		ll.append("test")
-	ll.append("hai")
+	# Test append
 	ll.append("test")
 
+	# Populate from flat-file database
 	ll.populate("db.txt", "\n")
 
+	# Test stdout output
 	print ll
 
+	# Test search functionality
 	print ll.find("Zuran Enchanter")
 
 

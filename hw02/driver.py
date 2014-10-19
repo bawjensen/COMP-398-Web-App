@@ -1,10 +1,16 @@
 import linkedlist
 
 def main():
-	ll = linkedlist.LinkedList() # Create the linked list
+	# Create the linked list
+	ll = linkedlist.LinkedList()
 
-	ll.populate_v2("states.csv", "\r", ",") # Populate from the file
+	# Populate from the file
+	ll.populate_v2("states.csv", "\r", ",")
 
+	# Test printing
+	print ll.find(('ALABAMA', 'AL'))
+
+	# Test printing
 	print ll
 
 

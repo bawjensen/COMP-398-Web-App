@@ -124,7 +124,9 @@ class LinkedList():
 		depth = 0
 
 		while iterNode != None:
-			if (type(item) == str and iterNode.getCargo() == item) or (type(item) == self.Node and iterNode == item):
+			if ((type(item) == str and iterNode.getCargo() == item) or
+				(type(item) == tuple and iterNode.getCargo() == item) or
+				(type(item) == self.Node and iterNode == item)):
 				return depth
 
 			iterNode = iterNode.getNext()
