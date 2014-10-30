@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lazy Caterer's Sequence</title>
+    <meta charset="utf-8">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <style type="text/css">
+        #container {
+            display: table;
+            margin: 0 auto;
+        }
+
+        .sequence-entry {
+            width: 500px;
+        }
+
+        .cf:before,
+        .cf:after {
+            content: ' ';
+            display: table;
+        }
+
+        .cf:after {
+            clear: both;
+        }
+
+        .sequence-entry > div {
+            width: 250px;
+            text-align: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .even {
+            background-color: #EAEAEA;
+        }
+        .odd {
+            background-color: #DADADA;
+        }
+
+        .sequence-n {
+            float: left;
+            clear: left;
+        }
+        .sequence-val {
+            float: right;
+            clear: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="cf sequence-entry">
+            <div class="sequence-n">n</div>
+            <div class="sequence-val">lazy caterer(n)</div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var input = parseInt(window.prompt('Give an \'n\' value: '));
+        // var input = 20;
+
+        while (isNaN(input) || input < 0) {
+            input = window.prompt('Give another \'n\' value (a positive integer this time): ');
+        }
+
+        for (var i = 0; i < input; ++i) {
+            var seqVal = ( (i * (i + 1)) / 2 ) + 1;
+            var newElement = $('<div/>', {
+                "class": "cf sequence-entry " + (i % 2 == 0 ? 'even' : 'odd')
+            });
+
+            var childElementN = $('<div/>', {
+                "class": "sequence-n",
+                html: i
+            });
+            var childElementVal = $('<div/>', {
+                "class": "sequence-val",
+                html: seqVal
+            });
+
+            newElement.append(childElementN);
+            newElement.append(childElementVal);
+
+            $('#container').append(newElement);
+        }
+    </script>
+</body>
+</html>
