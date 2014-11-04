@@ -1,4 +1,5 @@
 # Homework 13
 
-[homepage](http://bawjensen.me)
-[portfolio](http://bawjensen.me/portfolio)
+My [homepage](http://bawjensen.me).
+
+My [portfolio](http://bawjensen.me/portfolio).
