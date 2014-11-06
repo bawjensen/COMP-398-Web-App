@@ -28,29 +28,14 @@ function loadJSON() {
 }
 
 function saveToDatabase(cardJsonData) {
-    // return new Promise(function promiseSave(resolve, reject) {
-    //     MongoClient.connect('mongodb://bawjensen:dummytest@ds049160.mongolab.com:49160/webapp', function handleResponse(err, db) {
-    //         db.collection('hw14').save(, function handleWipeResponse(err) {
-    //             if (err) { reject(); }
-    //             else { resolve(); }
-    //         });
-    //     });
-    // });
-    // console.log(cardJsonData.cards.length);
-
-    return Promise.all(
-        cardJsonData.cards.map(function mapCardToPromise(entry, i, array) {
-            return new Promise(function makePromise(resolve, reject) {
-                MongoClient.connect('mongodb://bawjensen:dummytest@ds049160.mongolab.com:49160/webapp', function handleResponse(err, db) {
-                    // console.log('Saving entry: ' + JSON.stringify(entry));
-                    db.collection('hw14').save(entry, function handleWipeResponse(err) {
-                        if (err) { reject(); }
-                        else { resolve(); }
-                    });
-                });
+    return new Promise(function promiseSave(resolve, reject) {
+        MongoClient.connect('mongodb://bawjensen:dummytest@ds049160.mongolab.com:49160/webapp', function handleResponse(err, db) {
+            db.collection('hw14').insert(cardJsonData.cards, function handleWipeResponse(err) {
+                if (err) { reject(); }
+                else { resolve(); }
             });
-        })
-    );
+        });
+    });
 }
 
 function runEverything() {
