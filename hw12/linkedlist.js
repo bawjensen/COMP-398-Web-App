@@ -37,9 +37,7 @@ LinkedList.prototype.append = function append(newNode) {
 }
 
 LinkedList.prototype.insertIntoList = function insertIntoList(arrayData) {
-    // console.log(this);
     for (var i in arrayData) {
-        // console.log(this);
         this.append(arrayData[i]);
     }
 }
@@ -54,13 +52,45 @@ LinkedList.prototype.populate = function populate(fileName, delimiter) {
     });
 }
 
+LinkedList.prototype.find = function find(value) {
+    var index = 0;
+    itNode = this.head;
+
+    while (itNode != null) {
+        if (itNode.value == value) {
+            break;
+        }
+
+        ++index;
+        itNode = itNode.next;
+    }
+
+    if (itNode == null) {
+        index = -1;
+    }
+
+    return index;
+}
+
+LinkedList.prototype.search = LinkedList.prototype.find;
+
 LinkedList.prototype.toString = function toString() {
     var itNode = this.head;
 
+    var strBuffer = '';
+
     while (itNode != null) {
-        process.stdout.write(itNode.value + ', ');
+        if (typeof itNode.value == "string") {
+            strBuffer += '"' + itNode.value + '"' + ', ';
+        }
+        else {
+            strBuffer += itNode.value + ', ';
+        }
+
         itNode = itNode.next;
     }
+
+    return '[' + strBuffer.slice(0, -2) + ']';
 }
 
 function main() {
@@ -68,6 +98,9 @@ function main() {
 
     list.populate('db.txt', '\n').then(function printIt() {
         console.log(list.toString());
+    }).then(function findSomething() {
+        console.log(list.find('Weaver of Lies'));
+        console.log(list.search('Anowon, the Ruin Sage'));
     });
 }
 
