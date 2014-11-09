@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSON</title>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style type="text/css">
+    #container {
+      display: table;
+      margin: 0 auto;
+    }
+
+    #my-svg {
+      width: 800px;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <svg id="my-svg" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title desc" role="img">
+      <text x="400" y="50" font-size="40" text-anchor="middle">The temperatues for this forecast</text>
+    </svg>
+  </div>
+  <script type="text/javascript">
+    function svgEl(tagName) {
+      return document.createElementNS("http://www.w3.org/2000/svg", tagName);
+    }
+
+    $.get('./10day.json', function(data, err) {
+      // console.log(data);
+      // console.log(data.forecast.simpleforecast.forecastday);
+
+      var arrayData = data.forecast.simpleforecast.forecastday;
+
+      var svgWidth = $('svg').width();
+
+      arrayData.forEach(function(val, index) {
+        console.log(val);
+
+        var scale = 5;
+
+        // High
+        var newElement = $(svgEl('rect'));
+        var newTitle = $(svgEl('title'));
+        var newDesc = $(svgEl('desc'));
+
+        var height = scale * parseInt(val.high.fahrenheit);
+
+        newElement.attr('x', (svgWidth / arrayData.length) * index);
+        newElement.attr('y', 400 - height);
+        newElement.attr('fill', 'red');
+        newElement.attr('stroke', '#A00');
+        newElement.attr('width', 20);
+        newElement.attr('height', height);
+        newElement.attr('rx', 5);
+        newElement.attr('ry', 5);
+
+        newTitle.html('Red rectangle');
+        newDesc.html('Red rectangle showing the temperature high of this day.');
+
+        $('svg').append(newElement);
+        $('svg').append(newTitle);
+        $('svg').append(newDesc);
+
+        // Low
+        var newElement = $(svgEl('rect'));
+        var newTitle = $(svgEl('title'));
+        var newDesc = $(svgEl('desc'));
+
+        var height = scale * parseInt(val.low.fahrenheit);
+        
+        newElement.attr('x', (svgWidth / arrayData.length) * index);
+        newElement.attr('y', 400 - height);
+        newElement.attr('fill', 'blue');
+        newElement.attr('stroke', '#00A');
+        newElement.attr('width', 20);
+        newElement.attr('height', height);
+        newElement.attr('rx', 5);
+        newElement.attr('ry', 5);
+
+        newTitle.html('Blue rectangle');
+        newDesc.html('Blue rectangle showing the temperature low of this day.');
+
+        $('svg').append(newElement);
+        $('svg').append(newTitle);
+        $('svg').append(newDesc);
+      });
+
+    });
+  </script>
+</body>
+</html>
