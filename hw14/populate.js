@@ -26,7 +26,7 @@ function resetDatabase() {
 function preprocessJSON(cardJsonData) {
     console.log('Preprocessing data');
     return Object.keys(cardJsonData).map(function eachCard(entry, i, array) {
-        return entry;
+        return cardJsonData[entry];
     });
 }
 
@@ -39,6 +39,7 @@ function saveToDatabase(cardJsonData) {
     return new Promise(function promiseSave(resolve, reject) {
         MongoClient.connect('mongodb://bawjensen:dummytest@ds049160.mongolab.com:49160/webapp', function handleResponse(err, db) {
             console.log('Opened connection to database, inserting');
+            console.log(typeof cardJsonData[0]);
             db.collection('hw14').insert(cardJsonData, function handleWipeResponse(err) {
                 if (err) { reject(Error(err)); }
                 else { resolve(); }

@@ -1,0 +1,1 @@
+GET &lt;MY_URI&gt;/cards/546a79bab15772721baf0e72 HTTP/1.1
